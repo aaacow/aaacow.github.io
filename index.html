@@ -64,6 +64,49 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-小笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/10/20/%E5%B0%8F%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time datetime="2020-10-20T12:42:26.000Z" itemprop="datePublished">2020-10-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/20/%E5%B0%8F%E7%AC%94%E8%AE%B0/">关于c语言の小笔记&lt;更新中&gt;</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="1-判断m是否是整数？"><a href="#1-判断m是否是整数？" class="headerlink" title="1.判断m是否是整数？"></a>1.判断m是否是整数？</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">double</span> m;</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">&quot;%lf&quot;</span>,&amp;m);</span><br><span class="line">    <span class="keyword">if</span>(m-(<span class="keyword">int</span>) m==<span class="number">0</span>) <span class="built_in">printf</span>(<span class="string">&quot;是&quot;</span>);</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">&quot;不是&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="2-a，b间取最大值"><a href="#2-a，b间取最大值" class="headerlink" title="2.a，b间取最大值."></a>2.a，b间取最大值.</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    	<span class="keyword">int</span> a,b,max;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;a,&amp;b);</span><br><span class="line">	max=((a&gt;=b)?a:b);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;最大值为：%d&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">	</span><br></pre></td></tr></table></figure>
+
+<h1 id="3-a与b，使a-gt-b"><a href="#3-a与b，使a-gt-b" class="headerlink" title="3.a与b，使a&gt;b."></a>3.a与b，使a&gt;b.</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a,b,c;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;a,&amp;b);</span><br><span class="line">	<span class="keyword">if</span>(a&lt;b) c=a,a=b, b=c;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d   %d&quot;</span> ,a,b);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/10/20/%E5%B0%8F%E7%AC%94%E8%AE%B0/" data-id="ckgi004he0005skul48a478sq" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-对于c语言第一章的总结和回顾" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/10/02/%E5%AF%B9%E4%BA%8Ec%E8%AF%AD%E8%A8%80%E7%AC%AC%E4%B8%80%E7%AB%A0%E7%9A%84%E6%80%BB%E7%BB%93%E5%92%8C%E5%9B%9E%E9%A1%BE/" class="article-date">
@@ -86,26 +129,42 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="c语言的基础知识"><a href="#c语言的基础知识" class="headerlink" title="c语言的基础知识"></a>c语言的基础知识</h1><h1 id="第一章-c语言的基础知识"><a href="#第一章-c语言的基础知识" class="headerlink" title="第一章 c语言的基础知识"></a>第一章 c语言的基础知识</h1><h2 id="1-1-c语言概述"><a href="#1-1-c语言概述" class="headerlink" title="1.1 c语言概述"></a>1.1 c语言概述</h2><h2 id="1-2-c程序的结构"><a href="#1-2-c程序的结构" class="headerlink" title="1.2 c程序的结构"></a>1.2 c程序的结构</h2><p>![屏幕截图 2020-10-18 163104](对于c语言第一章的总结和回顾.assets/屏幕截图 2020-10-18 163104-1603178278539.png)</p>
+        <h1 id="c语言的基础知识"><a href="#c语言的基础知识" class="headerlink" title="c语言的基础知识"></a>c语言的基础知识</h1><h1 id="第一章-c语言的基础知识"><a href="#第一章-c语言的基础知识" class="headerlink" title="第一章 c语言的基础知识"></a>第一章 c语言的基础知识</h1><h2 id="1-1-c语言概述"><a href="#1-1-c语言概述" class="headerlink" title="1.1 c语言概述"></a>1.1 c语言概述</h2><hr>
+<h2 id="1-2-c程序的结构"><a href="#1-2-c程序的结构" class="headerlink" title="1.2 c程序的结构"></a>1.2 c程序的结构</h2><p><img src="/images/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202020-10-18%20163104-1603179321786.png"></p>
+<hr>
 <h2 id="1-3-c语言的数据类型"><a href="#1-3-c语言的数据类型" class="headerlink" title="1.3 c语言的数据类型"></a>1.3 c语言的数据类型</h2><h3 id="1-3-1-基本数据类型"><a href="#1-3-1-基本数据类型" class="headerlink" title="1.3.1 基本数据类型"></a>1.3.1 基本数据类型</h3><h4 id="1-整型"><a href="#1-整型" class="headerlink" title="1.整型"></a>1.整型</h4><p>和数学的概念一样，在C语言中，整数是没有小数部分的数。例如， 2、−23和2456都是整数。而3.14、0.22和2.000都不是整数。</p>
 <p>== *计算机以二进制储存整数数据的方法</p>
 <p>  例如，整数7以二进制写是111。因此，要在8位字节中储存该数字，需要把前5位都设置成0，后3位设置成1。</p>
-<p>​          0 0 0 0 0 1 1 1→字长8位 == </p>
-<h4 id="2-浮点型（小数"><a href="#2-浮点型（小数" class="headerlink" title="2.浮点型（小数)"></a>2.浮点型（小数)</h4><p>  2.75、3.16E7、7.00 和 2e-8 都是浮点数。注意，在一个值后面加上一个小数点，该值就成为一个浮点值。所 以，7是整数，7.00是浮点数。</p>
-<p>== *以浮点格式（十进制）储存π的值.</p>
-<p>  (符号).314159(小数)1(指数) ==</p>
-<h4 id="3-字符型（char）"><a href="#3-字符型（char）" class="headerlink" title="3.字符型（char）"></a>3.字符型（char）</h4><p>​     char类型用于储存字符（如，字母或标点符号），但是从技术层面看， char是整数类型。因为char类型实际上储存的是整数而不是字    符。另外，char类型也可以表示较小的整数。</p>
-<h3 id="1-3-2-变量与常量"><a href="#1-3-2-变量与常量" class="headerlink" title="1.3.2 变量与常量"></a>1.3.2 变量与常量</h3><p>有些数据类型在程序使用之前已经预先设定好了，在整个程序的运行过程中没有变化，这些称为常量（constant）。其他数据类型 在程序运行期间可能会改变或被赋值，这些称为变量（variable）。</p>
-<h3 id="1-3-3-二（八，十六）进制的转换"><a href="#1-3-3-二（八，十六）进制的转换" class="headerlink" title="1.3.3 二（八，十六）进制的转换"></a>1.3.3 二（八，十六）进制的转换</h3><h2 id="1-4-c程序的输入和输出"><a href="#1-4-c程序的输入和输出" class="headerlink" title="1.4 c程序的输入和输出"></a>1.4 c程序的输入和输出</h2><h4 id="函数形式：-include-lt-stdio-h-gt"><a href="#函数形式：-include-lt-stdio-h-gt" class="headerlink" title="*函数形式：#include&lt;stdio.h&gt;"></a>*函数形式：#include&lt;stdio.h&gt;</h4><h4 id="对象流形式：-include-lt-iostream-h-gt"><a href="#对象流形式：-include-lt-iostream-h-gt" class="headerlink" title="*对象流形式：#include&lt;iostream.h&gt;"></a>*对象流形式：#include&lt;iostream.h&gt;</h4><h4 id="输出：printf-“a-d-b-f”-a-b"><a href="#输出：printf-“a-d-b-f”-a-b" class="headerlink" title="*输出：printf (“a=%d,b=%f”,a,b);"></a>*输出：printf (“a=%d,b=%f”,a,b);</h4><p>​     printf为函数名；a，b为普通字符；%d，%f为格式说明；</p>
+<p><img src="/images/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202020-10-18%20163737.png"></p>
+<p>​          </p>
+<h4 id="2-浮点型（小数"><a href="#2-浮点型（小数" class="headerlink" title="2.浮点型（小数)"></a>2.浮点型（小数)</h4><blockquote>
+<p>  2.75、3.16E7、7.00 和 2e-8 都是浮点数。注意，在一个值后面加上一个小数点，该值就成为一个浮点值。所 以，7是整数，7.00是浮点数。</p>
+</blockquote>
+<p>== *以浮点格式（十进制）储存π的值.==</p>
+<p> <img src="/images/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202020-10-18%20164354.png"></p>
+<h4 id="3-字符型（char）"><a href="#3-字符型（char）" class="headerlink" title="3.字符型（char）"></a>3.字符型（char）</h4><blockquote>
+<p>​     char类型用于储存字符（如，字母或标点符号），但是从技术层面看， char是整数类型。因为char类型实际上储存的是整数而不是字    符。另外，char类型也可以表示较小的整数。</p>
+</blockquote>
+<h3 id="1-3-2-变量与常量"><a href="#1-3-2-变量与常量" class="headerlink" title="1.3.2 变量与常量"></a>1.3.2 变量与常量</h3><blockquote>
+<p>有些数据类型在程序使用之前已经预先设定好了，在整个程序的运行过程中没有变化，这些称为常量（constant）。其他数据类型 在程序运行期间可能会改变或被赋值，这些称为变量（variable）。</p>
+</blockquote>
+<h3 id="1-3-3-二（八，十六）进制的转换"><a href="#1-3-3-二（八，十六）进制的转换" class="headerlink" title="1.3.3 二（八，十六）进制的转换"></a>1.3.3 二（八，十六）进制的转换</h3><p><img src="/images/%E4%BA%8C%E8%BF%9B%E5%88%B6-%E5%85%AB%E8%BF%9B%E5%88%B6.png"></p>
+<p><img src="/images/%E4%BA%8C%E8%BF%9B%E5%88%B6%E2%86%92%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6.png"></p>
+<p><img src="/images/%E5%85%AB%E8%BF%9B%E5%88%B6%E2%86%92%E4%BA%8C%E8%BF%9B%E5%88%B6.png"></p>
+<p><img src="/images/%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6%E2%86%92%E4%BA%8C%E8%BF%9B%E5%88%B6.png"></p>
+<hr>
+<h2 id="1-4-c程序的输入和输出"><a href="#1-4-c程序的输入和输出" class="headerlink" title="1.4 c程序的输入和输出"></a>1.4 c程序的输入和输出</h2><h4 id="函数形式：-include-lt-stdio-h-gt"><a href="#函数形式：-include-lt-stdio-h-gt" class="headerlink" title="*函数形式：#include&lt;stdio.h&gt;"></a>*函数形式：#include&lt;stdio.h&gt;</h4><h4 id="对象流形式：-include-lt-iostream-h-gt"><a href="#对象流形式：-include-lt-iostream-h-gt" class="headerlink" title="*对象流形式：#include&lt;iostream.h&gt;"></a>*对象流形式：#include&lt;iostream.h&gt;</h4><h4 id="输出：printf-“a-d-b-f”-a-b"><a href="#输出：printf-“a-d-b-f”-a-b" class="headerlink" title="*输出：printf (“a=%d,b=%f”,a,b);"></a>*输出：printf (“a=%d,b=%f”,a,b);</h4><p>​     printf为函数名；a，b为普通字符；%d，%f为格式说明；</p>
 <p>​     后面的a，b为输出列表（替代前面的%d，%f)</p>
 <p>​     输出结果为：a=×，b=×</p>
 <h4 id="scanf（）函数"><a href="#scanf（）函数" class="headerlink" title="*scanf（）函数"></a>*scanf（）函数</h4><p>格式：scanf（格式控制序列，地址列表）；</p>
 <p>例如 scanf（”%d“，&amp;a）；</p>
-<h3 id="1-5一些基本表格"><a href="#1-5一些基本表格" class="headerlink" title="1.5一些基本表格"></a>1.5一些基本表格</h3><h1 id="（美化和图片更新中……）"><a href="#（美化和图片更新中……）" class="headerlink" title="（美化和图片更新中……）"></a>（美化和图片更新中……）</h1>
+<hr>
+<h2 id="1-5一些基本表格"><a href="#1-5一些基本表格" class="headerlink" title="1.5一些基本表格"></a>1.5一些基本表格</h2><p><img src="/images/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202020-10-20%20154401.png"></p>
+<h1 id="（美化和图片更新中……）"><a href="#（美化和图片更新中……）" class="headerlink" title="（美化和图片更新中……）"></a>（美化和图片更新中……）</h1>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/10/02/%E5%AF%B9%E4%BA%8Ec%E8%AF%AD%E8%A8%80%E7%AC%AC%E4%B8%80%E7%AB%A0%E7%9A%84%E6%80%BB%E7%BB%93%E5%92%8C%E5%9B%9E%E9%A1%BE/" data-id="ckghni3cd0003jculcg0wb1f1" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/10/02/%E5%AF%B9%E4%BA%8Ec%E8%AF%AD%E8%A8%80%E7%AC%AC%E4%B8%80%E7%AB%A0%E7%9A%84%E6%80%BB%E7%BB%93%E5%92%8C%E5%9B%9E%E9%A1%BE/" data-id="ckgi004hh0007skulgmuhht5r" class="article-share-link">Share</a>
       
       
     </footer>
@@ -141,7 +200,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/10/01/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" data-id="ckghni3ch0005jcul6fu970ah" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/10/01/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" data-id="ckgi004hg0006skulhvfrf9ei" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BD%A0%E5%A5%BD%EF%BC%8C%E8%BF%99%E6%98%AF%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%8D%9A%E5%AE%A2%EF%BC%8C%E5%BC%84%E4%BA%86%E5%BE%88%E4%B9%85%EF%BC%8C%E8%80%90%E5%BF%83%E5%92%8C%E7%99%BE%E5%BA%A6%E9%83%BD%E6%98%AF%E5%A5%BD%E4%B8%9C%E8%A5%BF%E3%80%82/" rel="tag">你好，这是我的第一个博客，弄了很久，耐心和百度都是好东西。</a></li></ul>
@@ -192,7 +251,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/10/01/hello-world/" data-id="ckghni3ca0001jcul8liy5n5r" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/10/01/hello-world/" data-id="ckgi004hc0004skul4f9t5dj8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -245,6 +304,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/10/20/%E5%B0%8F%E7%AC%94%E8%AE%B0/">关于c语言の小笔记&lt;更新中&gt;</a>
+          </li>
         
           <li>
             <a href="/2020/10/02/%E5%AF%B9%E4%BA%8Ec%E8%AF%AD%E8%A8%80%E7%AC%AC%E4%B8%80%E7%AB%A0%E7%9A%84%E6%80%BB%E7%BB%93%E5%92%8C%E5%9B%9E%E9%A1%BE/">对于c语言第一章的总结和回顾</a>
