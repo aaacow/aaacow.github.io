@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>一些比较。 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1.break和continue的运用.break语句在多层循环中，一个 break 语句只向外跳一层。例如，输出一个4*4的整数矩阵： 1234567891011121314151617#include &lt;stdio.h&gt;int main()&amp;#123;    int i&#x3D;1, j;    while(1)&amp;#123;  &#x2F;&#x2F; 外层循环        j&#x3D;1;        whil">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一些比较。">
+<meta property="og:url" content="http://example.com/2020/11/04/aaa/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1.break和continue的运用.break语句在多层循环中，一个 break 语句只向外跳一层。例如，输出一个4*4的整数矩阵： 1234567891011121314151617#include &lt;stdio.h&gt;int main()&amp;#123;    int i&#x3D;1, j;    while(1)&amp;#123;  &#x2F;&#x2F; 外层循环        j&#x3D;1;        whil">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-11-04T09:08:20.000Z">
+<meta property="article:modified_time" content="2020-11-04T10:10:14.287Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-aaa" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/11/04/aaa/" class="article-date">
+  <time datetime="2020-11-04T09:08:20.000Z" itemprop="datePublished">2020-11-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      一些比较。
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-break和continue的运用"><a href="#1-break和continue的运用" class="headerlink" title="1.break和continue的运用."></a>1.break和continue的运用.</h2><h3 id="break语句"><a href="#break语句" class="headerlink" title="break语句"></a>break语句</h3><p>在多层循环中，一个 break 语句只向外跳一层。例如，输出一个4*4的整数矩阵：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i=<span class="number">1</span>, j;</span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)&#123;  <span class="comment">// 外层循环</span></span><br><span class="line">        j=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(<span class="number">1</span>)&#123;  <span class="comment">// 内层循环</span></span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%-4d&quot;</span>, i*j);</span><br><span class="line">            j++;</span><br><span class="line">            <span class="keyword">if</span>(j&gt;<span class="number">4</span>) <span class="keyword">break</span>;  <span class="comment">//跳出内层循环</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">        i++;</span><br><span class="line">        <span class="keyword">if</span>(i&gt;<span class="number">4</span>) <span class="keyword">break</span>;  <span class="comment">// 跳出外层循环</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1   2   3   4</span><br><span class="line">2   4   6   8</span><br><span class="line">3   6   9   12</span><br><span class="line">4   8   12  16</span><br></pre></td></tr></table></figure>
+
+<p>当 j&gt;4 成立时，执行<code>break;</code>，跳出内层循环；外层循环依然执行，直到 i&gt;4 成立，跳出外层循环。内层循环共执行了4次，外层循环共执行了1次。</p>
+<h3 id="continue语句"><a href="#continue语句" class="headerlink" title="continue语句"></a>continue语句</h3><p>continue 语句的作用是跳过循环体中剩余的语句而强制进入下一次循环。continue语句只用在 while、for 循环中，常与 if 条件语句一起使用，判断条件是否成立。</p>
+<p>来看一个例子：</p>
+<figure class="highlight cc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> c = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(c!=<span class="string">&#x27;\n&#x27;</span>)&#123;  <span class="comment">//回车键结束循环</span></span><br><span class="line">        c=getchar();</span><br><span class="line">        <span class="keyword">if</span>(c==<span class="string">&#x27;4&#x27;</span> || c==<span class="string">&#x27;5&#x27;</span>)&#123;  <span class="comment">//按下的是数字键4或5</span></span><br><span class="line">            <span class="keyword">continue</span>;  <span class="comment">//跳过当次循环，进入下次循环</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">putchar</span>(c);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：<br>0123456789↙<br>01236789</p>
+<p>程序遇到while时，变量c的值为<code>&#39;\0&#39;</code>，循环条件<code>c!=&#39;\n&#39;</code>成立，开始第一次循环。getchar() 使程序暂停执行，等待用户输入，直到用户按下回车键才开始读取字符。</p>
+<p>本例我们输入的是 0123456789，当读取到4或5时，if 的条件<code>c==&#39;4&#39;||c==&#39;5&#39;</code>成立，就执行 continue 语句，结束当前循环，直接进入下一次循环，也就是说<code>putchar(c);</code>不会被执行到。而读取到其他数字时，if 的条件不成立，continue 语句不会被执行到，<code>putchar(c);</code>就会输出读取到的字符。</p>
+<hr>
+<h4 id="break与continue的对比：break-用来结束所有循环，循环语句不再有执行的机会；continue-用来结束本次循环，直接跳到下一次循环，如果循环条件成立，还会继续循环。"><a href="#break与continue的对比：break-用来结束所有循环，循环语句不再有执行的机会；continue-用来结束本次循环，直接跳到下一次循环，如果循环条件成立，还会继续循环。" class="headerlink" title="*break与continue的对比：break 用来结束所有循环，循环语句不再有执行的机会；continue 用来结束本次循环，直接跳到下一次循环，如果循环条件成立，还会继续循环。"></a>*break与continue的对比：break 用来结束所有循环，循环语句不再有执行的机会；continue 用来结束本次循环，直接跳到下一次循环，如果循环条件成立，还会继续循环。</h4><hr>
+<h2 id="2-scanf-与gets"><a href="#2-scanf-与gets" class="headerlink" title="2.scanf()与gets()"></a>2.scanf()与gets()</h2><h3 id="scanf"><a href="#scanf" class="headerlink" title="scanf()"></a>scanf()</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">char</span> str1[<span class="number">20</span>], str2[<span class="number">20</span>];</span><br><span class="line">        <span class="built_in">scanf</span>(“%s”,str1); </span><br><span class="line">        <span class="built_in">printf</span>(“%s\n”,str1);    </span><br><span class="line">        <span class="built_in">scanf</span>(“%s”,str2); </span><br><span class="line">        <span class="built_in">printf</span>(“%s\n”,str2); </span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="–测试一："><a href="#–测试一：" class="headerlink" title="–测试一："></a>–测试一：</h5><p>输入：</p>
+<p>Hello world!</p>
+<p>输出：</p>
+<p>Hello<br>world!<br>【分析】到此程序执行完毕，不会执行第二次的读取操作！第一次输入Hello world!后，字符串Hello world!都会被读到输入缓冲区中，而scanf()函数取数据是遇到<u>回车、空格、TAB</u>就会停止，也就是第一个scanf()会取出”Hello”，而”world!”还在缓冲区中，这样第二个scanf会直接取出这些数据，而不会等待从终端输入。</p>
+<h5 id="–测试二："><a href="#–测试二：" class="headerlink" title="–测试二："></a>–测试二：</h5><p>Hello[Enter]<br>Hello[输出]<br>world[Enter]<br>world[输出]<br>【分析】程序执行了两次从键盘读入字符串，说明第一次输入结束时的回车符被丢弃！即：scanf()读取字符串会舍弃最后的回车符！</p>
+<h3 id="gets"><a href="#gets" class="headerlink" title="gets()"></a>gets()</h3><p>用scanf来读取一个字符串时，字符串中是不可以出现空格的，一旦出现空格，后面的数据就会舍弃残留在缓冲区中。其实有另外一个函数是可以接受空格的，那就是gets()，下面我们看一下这个函数的应用:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> str1[<span class="number">20</span>], str2[<span class="number">20</span>];</span><br><span class="line">    gets(str1); </span><br><span class="line">    <span class="built_in">printf</span>(“%s\n”,str1);    </span><br><span class="line">    gets(str2); </span><br><span class="line">    <span class="built_in">printf</span>(“%s\n”,str2); </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="测试："><a href="#测试：" class="headerlink" title="测试："></a>测试：</h5><p>Hello world! [输入]<br>Hello world! [输出]<br>12345 [输入]<br>12345 [输出]<br>【分析】显然与上一个程序的执行情况不同，这次程序执行了两次从键盘的读入，而且第一个字符串取了Hello world! 接受了空格符，而没有像上一个程序那样分成了两个字符串！所以如果要读入一个带空格符的字符串时因该用gets(), 而不宜用scanf()!</p>
+<hr>
+<h4 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h4><ul>
+<li>scanf() 读取字符串时以空格为分隔，遇到空格就认为当前字符串结束了，所以无法读取含有空格的字符串。</li>
+<li>gets() 认为空格也是字符串的一部分，只有遇到回车键时才认为字符串输入结束，所以，不管输入了多少个空格，只要不按下回车键，对 gets() 来说就是一个完整的字符串。换句话说，gets() 用来读取一整行字符串。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/11/04/aaa/" data-id="ckh38q9no0003m4ul2z894vpw" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/10/24/1024/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">第二章 运算符与表达式</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%A0%E5%A5%BD%EF%BC%8C%E8%BF%99%E6%98%AF%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%8D%9A%E5%AE%A2%EF%BC%8C%E5%BC%84%E4%BA%86%E5%BE%88%E4%B9%85%EF%BC%8C%E8%80%90%E5%BF%83%E5%92%8C%E7%99%BE%E5%BA%A6%E9%83%BD%E6%98%AF%E5%A5%BD%E4%B8%9C%E8%A5%BF%E3%80%82/" rel="tag">你好，这是我的第一个博客，弄了很久，耐心和百度都是好东西。</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E4%BD%A0%E5%A5%BD%EF%BC%8C%E8%BF%99%E6%98%AF%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%8D%9A%E5%AE%A2%EF%BC%8C%E5%BC%84%E4%BA%86%E5%BE%88%E4%B9%85%EF%BC%8C%E8%80%90%E5%BF%83%E5%92%8C%E7%99%BE%E5%BA%A6%E9%83%BD%E6%98%AF%E5%A5%BD%E4%B8%9C%E8%A5%BF%E3%80%82/" style="font-size: 10px;">你好，这是我的第一个博客，弄了很久，耐心和百度都是好东西。</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/11/04/aaa/">一些比较。</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/24/1024/">第二章 运算符与表达式</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/20/%E5%B0%8F%E7%AC%94%E8%AE%B0/">关于c语言の小笔记&lt;更新中&gt;</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/02/%E5%AF%B9%E4%BA%8Ec%E8%AF%AD%E8%A8%80%E7%AC%AC%E4%B8%80%E7%AB%A0%E7%9A%84%E6%80%BB%E7%BB%93%E5%92%8C%E5%9B%9E%E9%A1%BE/">对于c语言第一章的总结和回顾</a>
+          </li>
+        
+          <li>
+            <a href="/2020/10/01/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">我的第一个博客</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
