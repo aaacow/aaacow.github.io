@@ -64,6 +64,86 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-php/常量" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/01/25/php/%E5%B8%B8%E9%87%8F/" class="article-date">
+  <time datetime="2021-01-25T12:35:52.000Z" itemprop="datePublished">2021-01-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/25/php/%E5%B8%B8%E9%87%8F/">常量</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-常量的特点"><a href="#1-常量的特点" class="headerlink" title="1.常量的特点"></a>1.常量的特点</h2><p>与变量相比，常量具有以下几个特点：</p>
+<ul>
+<li>常量前面<strong>没有</strong>美元符号（$）；</li>
+<li>常量只能用 <strong>define()</strong> 和 <strong>const</strong> 定义；</li>
+<li>常量的作用域是<strong>全局</strong>的；</li>
+<li>常量一旦被定义就<strong>不能被重新定义或者取消定义</strong>。</li>
+</ul>
+<h2 id="2-常量的定义"><a href="#2-常量的定义" class="headerlink" title="2.常量的定义"></a>2.常量的定义</h2><p>在 PHP 中可以通过 define() 函数定义一个常量，define() 函数的语法如下：</p>
+<blockquote>
+<p><strong>define(string $name, mixed $value [, bool $case_insensitive = false])</strong></p>
+</blockquote>
+<p>define() 函数参数的说明如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$name</td>
+<td>必选参数，常量<strong>名称（</strong>需要使用<strong>双引号</strong>或<strong>单引号</strong>包裹）</td>
+</tr>
+<tr>
+<td>$value</td>
+<td>必选参数，常量的<strong>值</strong></td>
+</tr>
+<tr>
+<td>$case_insensitive</td>
+<td>可选参数，指定是否大小写敏感，<strong>默认是大小写敏感的</strong>，设定为 true 则表示大小写不敏感</td>
+</tr>
+</tbody></table>
+<p>除了可以使用 define() 函数之外，还可以使用 const 关键字来定义常量，const 关键字的语法如下：</p>
+<blockquote>
+<p><strong>const 常量名 = 常量值;</strong></p>
+</blockquote>
+<p>下面通过示例来演示一下常量的使用：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    define(<span class="string">&#x27;WebSite&#x27;</span>, <span class="string">&#x27;blog&#x27;</span>);</span><br><span class="line">    <span class="keyword">const</span> url = <span class="string">&#x27;http://aaacow.github.io&#x27;</span>;</span><br><span class="line">    <span class="keyword">echo</span> WebSite.<span class="string">&#x27;&lt;br&gt;&#x27;</span>;</span><br><span class="line">    <span class="keyword">echo</span> url;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>结果如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">blog</span><br><span class="line">http:&#x2F;&#x2F;aaacow.github.io</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/25/php/%E5%B8%B8%E9%87%8F/" data-id="ckkcl7tj5000qqsul6n7jfbk7" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/" rel="tag">php</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-魔幻的世界/墨茶" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/01/24/%E9%AD%94%E5%B9%BB%E7%9A%84%E4%B8%96%E7%95%8C/%E5%A2%A8%E8%8C%B6/" class="article-date">
@@ -95,7 +175,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/01/24/%E9%AD%94%E5%B9%BB%E7%9A%84%E4%B8%96%E7%95%8C/%E5%A2%A8%E8%8C%B6/" data-id="ckkarnins000ru8ulhsgvevjd" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/01/24/%E9%AD%94%E5%B9%BB%E7%9A%84%E4%B8%96%E7%95%8C/%E5%A2%A8%E8%8C%B6/" data-id="ckkcl7tj4000oqsul1l635zoa" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%AD%94%E5%B9%BB%E4%B8%96%E7%95%8C/" rel="tag">魔幻世界</a></li></ul>
@@ -107,9 +187,9 @@
 
 
   
-    <article id="post-变量（php）" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-php/变量（php）" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2021/01/23/%E5%8F%98%E9%87%8F%EF%BC%88php%EF%BC%89/" class="article-date">
+    <a href="/2021/01/23/php/%E5%8F%98%E9%87%8F%EF%BC%88php%EF%BC%89/" class="article-date">
   <time datetime="2021-01-23T12:48:43.000Z" itemprop="datePublished">2021-01-23</time>
 </a>
     
@@ -121,7 +201,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/01/23/%E5%8F%98%E9%87%8F%EF%BC%88php%EF%BC%89/">变量（php）</a>
+      <a class="article-title" href="/2021/01/23/php/%E5%8F%98%E9%87%8F%EF%BC%88php%EF%BC%89/">变量（php）</a>
     </h1>
   
 
@@ -130,7 +210,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>声明 PHP 变量必须使用一个美元符号“$”后面跟变量名来表示，然后再使用“=”给这个变量赋值。</p>
-<h2 id="1-变量的命名规则"><a href="#1-变量的命名规则" class="headerlink" title="1.变量的命名规则"></a>1.变量的命名规则</h2><p>变量名并不是可以随意定义的，一个有效的变量名应该满足以下几点要求：</p>
+<h1 id="1-变量的命名规则"><a href="#1-变量的命名规则" class="headerlink" title="1.变量的命名规则"></a>1.变量的命名规则</h1><p>变量名并不是可以随意定义的，一个有效的变量名应该满足以下几点要求：</p>
 <ul>
 <li>变量必须以 <strong>$</strong> 符号开头，其后是变量的名称，$ 并不是变量名的一部分；</li>
 <li>变量名必须以<strong>字母或下划线</strong>开头；</li>
@@ -138,11 +218,100 @@
 <li>变量名只能包含<strong>字母（A<del>z）、数字（0</del>9）和下划线（_）</strong>；</li>
 <li>与其它语言不通的是，PHP 中的<strong>一些关键字也可以作为变量名</strong>（例如 $true、$for）。</li>
 </ul>
+<h1 id="2-PHP变量作用域"><a href="#2-PHP变量作用域" class="headerlink" title="2.PHP变量作用域"></a>2.PHP变量作用域</h1><h2 id="1-局部变量与局部作用域"><a href="#1-局部变量与局部作用域" class="headerlink" title="1.局部变量与局部作用域"></a>1.局部变量与局部作用域</h2><p>​          局部变量就是在<strong>函数的内部定义</strong>的变量，它只能在定义它的函数内使用。局部变量会<strong>在函数调用结束时自动销毁</strong>。</p>
+<h2 id="2-全局变量与全局作用域"><a href="#2-全局变量与全局作用域" class="headerlink" title="2.全局变量与全局作用域"></a>2.全局变量与全局作用域</h2><p>​     全局变量就是定义在<strong>所有函数以外</strong>的变量，其作用域是当前源码的任何地方，但是<strong>在函数内部是不可用</strong>的。在程序运行期间全局变量会一直存在，只有程序结束运行时才会被销毁。</p>
+<h1 id="3-变量的赋值"><a href="#3-变量的赋值" class="headerlink" title="3.变量的赋值"></a>3.变量的赋值</h1><h2 id="1-直接赋值"><a href="#1-直接赋值" class="headerlink" title="1.直接赋值"></a>1.直接赋值</h2><h2 id="2-拷贝赋值"><a href="#2-拷贝赋值" class="headerlink" title="2.拷贝赋值"></a>2.拷贝赋值</h2><h2 id="3-引用赋值"><a href="#3-引用赋值" class="headerlink" title="3.引用赋值"></a>3.引用赋值</h2><p>​         引用赋值就是将一个变量的<strong>内存地址</strong>，“复制”一份，传给另一个变量。这两个变量代表的是同一个值。<strong>改变其中一个，另一个也会改变。</strong></p>
+<h1 id="4-可变变量"><a href="#4-可变变量" class="headerlink" title="4.可变变量"></a>4.可变变量</h1><p>   PHP 中有一个特殊的变量——可变变量。所谓可变变量就是<strong>一个变量以另外一个变量的值</strong>作为<strong>变量名</strong>。这种语法形式是 PHP 的<strong>特殊语法</strong>，其他语言中很少见。</p>
+<p>声明可变变量的方法非常简单，只需要在变量名前<strong>加上至少两个“$”符号</strong>即可，示例代码如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    $demo = <span class="string">&#x27;string&#x27;</span>;</span><br><span class="line">    $$demo = <span class="string">&#x27;blog&#x27;</span>;</span><br><span class="line">    <span class="keyword">echo</span> $string.<span class="string">&#x27;&lt;br&gt;&#x27;</span>;</span><br><span class="line">    $name = <span class="string">&#x27;PHP&#x27;</span>;</span><br><span class="line">    $str = <span class="string">&#x27;name&#x27;</span>;</span><br><span class="line">    <span class="keyword">echo</span> $$str.<span class="string">&#x27;&lt;br&gt;&#x27;</span>;</span><br><span class="line">    $url = <span class="string">&#x27;http://c.biancheng.net/php/&#x27;</span>;</span><br><span class="line">    $website = <span class="string">&#x27;url&#x27;</span>;</span><br><span class="line">    $link = <span class="string">&#x27;website&#x27;</span>;</span><br><span class="line">    <span class="keyword">echo</span> $$$link;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>结果如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">blog</span><br><span class="line">PHP</span><br><span class="line">http:&#x2F;&#x2F;c.biancheng.net&#x2F;php&#x2F;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>可变变量还可以用于<strong>数组</strong>，不过在此之前必须先解决一个模棱两可的问题，那就是当写下 $$a[1] 时，PHP 解析器需要知道你是想要 $a[1] 作为一个变量呢，还是想要 $$a 作为一个变量并取出该变量中索引为 [1] 的值。</p>
+<p>解决这个问题的语法是<strong>使用“{ }”将变量包裹</strong>，比如第一种情况用 **${$a[1]}**；第二种情况用 **${$a}[1]**，示例代码如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    $demo = <span class="string">&#x27;php&#x27;</span>;</span><br><span class="line">    $test = <span class="string">&#x27;http://c.biancheng.net/php/&#x27;</span>;</span><br><span class="line">    $arr = <span class="keyword">array</span>(<span class="string">&#x27;demo&#x27;</span>, <span class="string">&#x27;test&#x27;</span>);</span><br><span class="line">    <span class="keyword">echo</span> $&#123;$arr[<span class="number">0</span>]&#125;.<span class="string">&#x27;&lt;br&gt;&#x27;</span>.$&#123;$arr[<span class="number">1</span>]&#125;.<span class="string">&#x27;&lt;br&gt;&#x27;</span>;</span><br><span class="line">   </span><br><span class="line">    $arr2 = <span class="keyword">array</span>(<span class="string">&#x27;PHP 教程&#x27;</span>, <span class="string">&#x27;PHP 可变变量&#x27;</span>);</span><br><span class="line">    $str = <span class="string">&#x27;arr2&#x27;</span>;</span><br><span class="line">    <span class="keyword">echo</span> $&#123;$str&#125;[<span class="number">0</span>].<span class="string">&#x27;&lt;br&gt;&#x27;</span>.$&#123;$str&#125;[<span class="number">1</span>];</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">php</span><br><span class="line">http:&#x2F;&#x2F;c.biancheng.net&#x2F;php&#x2F;</span><br><span class="line">PHP 教程</span><br><span class="line">PHP 可变变量</span><br></pre></td></tr></table></figure>
+
+<h1 id="5-预定义变量"><a href="#5-预定义变量" class="headerlink" title="5.预定义变量"></a>5.预定义变量</h1><p><strong>预定义变量</strong>又叫<strong>超全局变量</strong>，它们不需要提前声明就可以在所有的作用域中使用。通过这些预定义变量可以获取用户会话、用户操作系统的环境和本地操作系统的环境等信息。</p>
+<p>*注意：预定义变量基本上都是以<strong>数组</strong>形式存在的。</p>
+<p>常用的预定义变量如下所示：</p>
+<ul>
+<li><strong>$GLOBALS：全局作用域中的全部可用变量；</strong></li>
+<li><strong>$_SERVER：服务器和执行环境的信息；</strong></li>
+<li><strong>$_REQUEST：包含了 $_GET，$_POST 和 $_COOKIE 的所有信息；</strong></li>
+<li><strong>$_POST：通过 POST 方法提交的数据；</strong></li>
+<li><strong>$_GET：通过 GET 方法提交的数据；</strong></li>
+<li><strong>$_FILES：通过 POST 方式上传到服务器的文件数据；</strong></li>
+<li><strong>$_ENV：通过环境方式传递给当前脚本的变量组成的数组；</strong></li>
+<li><strong>$_COOKIE：通过 HTTP Cookies 方式传递给当前脚本的变量所组成的数组；</strong></li>
+<li><strong>$_SESSION：当前脚本可用 SESSION 变量组成的数组。</strong></li>
+</ul>
+<p>具体作用请看：<a target="_blank" rel="noopener" href="http://c.biancheng.net/view/7262.html"></a></p>
+<h1 id="6-静态变量"><a href="#6-静态变量" class="headerlink" title="6.静态变量"></a>6.静态变量</h1><p>静态变量是一个<strong>特殊的局部变量</strong>，我们知道，在函数内部定义一个局部变量，函数调用结束之后这个变量就会被销毁，不能继续使用了。而静态变量不同，静态变量在初始化之后，会在<strong>程序运行期间会一直存在</strong>。</p>
+<p>和局部变量相比，静态变量具有一下特点：</p>
+<ul>
+<li>当函数执行完毕后，静态变量<strong>不会消失</strong>；</li>
+<li>静态变量只能在<strong>函数内部</strong>使用；</li>
+<li>静态变量<strong>只会被初始化一次</strong>； </li>
+<li>静态变量<strong>初始化的值可以省略</strong>，默认值为 null；</li>
+<li>静态变量的初始值<strong>只能是具体的字符串、数值等</strong>，而不能是一个表达式。</li>
+</ul>
+<p>注1：之所以称为静态，是因为它**<em>不会随着函数的调用和退出</em>而发生变化**。即上次调用函数的时候，如果我们给静态变量赋予某个值的话，那么下次函数调用时，这个值是保持不变。</p>
+<p>注2：静态变量虽然在程序的整个执行过程中始终存在，但是它的作用域和局部变量是一样的，在<strong>作用域之外是不能使用</strong>的。</p>
+<h3 id="定义一个静态变量"><a href="#定义一个静态变量" class="headerlink" title="*定义一个静态变量"></a>*定义一个静态变量</h3><p>我们需要用到 <strong>static 关键字</strong>，使用方法如下：</p>
+<blockquote>
+<p><strong>static 变量 = 值;</strong> </p>
+</blockquote>
+<p>当同时定义多个静态变量，且使用默认值初始化时，也可以像下面这样：（多个变量之间使用“,”分隔）</p>
+<blockquote>
+<p><strong>static 变量1, 变量2, …</strong></p>
+</blockquote>
+<p>静态变量大多用在，函数需要<strong>多次调用</strong>且需要<strong>共享</strong>一份数据时，比如使用递归的方式遍历某个目录。</p>
+<p>【示例】定义一个静态变量来记录函数调用的次数，另外再定义一个局部变量与静态变量做对比，具体代码如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">demo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">static</span> $a;</span><br><span class="line">        $b = <span class="number">0</span>;</span><br><span class="line">        $a++;</span><br><span class="line">        $b++;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&#x27;第 &#x27;</span>.$a.<span class="string">&#x27; 次运行 demo 函数, 局部变量 $b 的值为：&#x27;</span>.$b.<span class="string">&#x27;&lt;br&gt;&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    demo();</span><br><span class="line">    demo();</span><br><span class="line">    demo();</span><br><span class="line">    demo();</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>结果如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">第 1 次运行 demo 函数, 局部变量 $b 的值为：1</span><br><span class="line">第 2 次运行 demo 函数, 局部变量 $b 的值为：1</span><br><span class="line">第 3 次运行 demo 函数, 局部变量 $b 的值为：1</span><br><span class="line">第 4 次运行 demo 函数, 局部变量 $b 的值为：1</span><br></pre></td></tr></table></figure>
+
+<p>静态变量a再退出函数时没被销毁，局部变量b被销毁了。</p>
+<h1 id="7-global与-GLOBALS：在函数内访问全局变量"><a href="#7-global与-GLOBALS：在函数内访问全局变量" class="headerlink" title="7.global与$GLOBALS：在函数内访问全局变量"></a>7.global与$GLOBALS：在函数内访问全局变量</h1><p>函数内部是不允许使用在函数外部定义的全局变量的，但是有些时候却需要在函数内使用这些全局变量，那么我们该怎么办呢？</p>
+<h3 id="1-global"><a href="#1-global" class="headerlink" title="1.global"></a>1.global</h3><p>使用 PHP 中的 <strong>global 关键字</strong>就可以让我们在<strong>函数内部使用在函数外部定义的全局变量</strong>，语法格式如下：</p>
+<blockquote>
+<p><strong>global 变量1, 变量2, …</strong></p>
+</blockquote>
+<p>global 关键字后面可以跟多个变量作为参数，多个变量之间以“,”分隔。</p>
+<p>使用 global 关键字需要注意一下几点：</p>
+<ul>
+<li>global 关键字，<strong>只能在函数内部使用</strong>，不能在函数外部使用；</li>
+<li>global 关键字只能用来<strong>引用函数外部的全局变量</strong>，在引用时不能直接赋值，赋值和声明语句需要分开写；</li>
+<li>在函数<strong>内部销毁</strong>一个使用 global 关键字修饰的变量时，函数<strong>外部的变量不受影响。</strong></li>
+</ul>
+<p>【示例】分别定义三个全局变量，并在函数内对部分变量使用 global 关键字，然后在函数内部尝试调用这些变量的值：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    $a = <span class="number">1</span>;</span><br><span class="line">    $b = <span class="number">2</span>;</span><br><span class="line">    $c = <span class="number">3</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">demo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">global</span> $a, $b;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;变量 a：&quot;</span>.$a;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;&lt;br&gt;变量 b：&quot;</span>.$b;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;&lt;br&gt;变量 c：&quot;</span>.$c;</span><br><span class="line">    &#125;</span><br><span class="line">    demo();</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>通过运行结果可以看出，在函数 demo 中使用 global 关键字在函数内部成功打印了变量 $a、$b 的值，而变量 $c 没有使用，虽然程序不会出错，但是没有打印成功。</p>
+<h3 id="2-GLOBALS"><a href="#2-GLOBALS" class="headerlink" title="2.$GLOBALS"></a>2.$GLOBALS</h3><p>$GLOBALS 是一个预定义的超全局数组，其中包含了全局作用域中的<strong>所有可用变量</strong>，变量的名字就是数组的键。</p>
+<p>【示例】调整上面示例中的代码，在函数内部使用 $GLOBALS 调用在函数外部定义的全局变量：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    $a = <span class="number">1</span>;</span><br><span class="line">    $b = <span class="number">2</span>;</span><br><span class="line">    $c = <span class="number">3</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">demo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;变量 a：&quot;</span>.$GLOBALS[<span class="string">&#x27;a&#x27;</span>];</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;&lt;br&gt;变量 b：&quot;</span>.$GLOBALS[<span class="string">&#x27;b&#x27;</span>];</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;&lt;br&gt;变量 c：&quot;</span>.$GLOBALS[<span class="string">&#x27;c&#x27;</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    demo();</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">变量 a：1</span><br><span class="line">变量 b：2</span><br><span class="line">变量 c：3</span><br></pre></td></tr></table></figure>
+
+<h3 id="不同点"><a href="#不同点" class="headerlink" title="*不同点"></a>*不同点</h3><p>与 global 相比，$GLOBALS 有一下几点不同：</p>
+<ul>
+<li>global $var 指的是对函数外部同名<strong>变量的引用</strong>，是两个互不影响的变量，而 $GLOBALS[‘var’] 指的是函数外部<strong>变量本身</strong>，是一个变量。</li>
+<li>$GLOBALS 不限定必须在函数内部使用，在程序的<strong>任意位置</strong>都能使用。</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/01/23/%E5%8F%98%E9%87%8F%EF%BC%88php%EF%BC%89/" data-id="ckkarnine0009u8ul7qq5c40l" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/01/23/php/%E5%8F%98%E9%87%8F%EF%BC%88php%EF%BC%89/" data-id="ckkcl7tj3000mqsuldpq7818b" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/" rel="tag">php</a></li></ul>
@@ -154,9 +323,9 @@
 
 
   
-    <article id="post-数据类型（php）" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-php/数据类型（php）" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2021/01/23/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%88php%EF%BC%89/" class="article-date">
+    <a href="/2021/01/23/php/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%88php%EF%BC%89/" class="article-date">
   <time datetime="2021-01-23T03:26:03.000Z" itemprop="datePublished">2021-01-23</time>
 </a>
     
@@ -168,7 +337,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/01/23/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%88php%EF%BC%89/">php的数据类型</a>
+      <a class="article-title" href="/2021/01/23/php/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%88php%EF%BC%89/">php的数据类型</a>
     </h1>
   
 
@@ -217,7 +386,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/01/23/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%88php%EF%BC%89/" data-id="ckkarninq000nu8ul3k3h9khw" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/01/23/php/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%88php%EF%BC%89/" data-id="ckkcl7tj4000pqsul9uaa6aqr" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/" rel="tag">php</a></li></ul>
@@ -259,7 +428,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/12/24/zati/" data-id="ckkarninc0008u8ul2a613ia8" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/12/24/zati/" data-id="ckkcl7tiw0009qsul8halarv2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li></ul>
@@ -301,7 +470,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/12/22/aaaaa/" data-id="ckkarnina0006u8ul5pmf98w7" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/12/22/aaaaa/" data-id="ckkcl7tiu0006qsul6t5ve3wd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li></ul>
@@ -343,7 +512,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/12/22/%E5%AD%97%E7%AC%A6%E4%B8%B2/" data-id="ckkarninj000cu8ulefd91uir" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/12/22/%E5%AD%97%E7%AC%A6%E4%B8%B2/" data-id="ckkcl7tiv0008qsul1d5yfade" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li></ul>
@@ -412,7 +581,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/11/04/%E6%AF%94%E8%BE%83/" data-id="ckkarninr000pu8uleh0w9cd8" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/11/04/%E6%AF%94%E8%BE%83/" data-id="ckkcl7tj1000iqsulbyy9ewm0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li></ul>
@@ -450,7 +619,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/10/24/1024/" data-id="ckkarnin10001u8uldy1ufz30" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/10/24/1024/" data-id="ckkcl7tio0001qsulbgs9eslr" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li></ul>
@@ -499,76 +668,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/10/20/%E5%B0%8F%E7%AC%94%E8%AE%B0/" data-id="ckkarninn000ku8uldra29rag" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-对于c语言第一章的总结和回顾" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/10/02/%E5%AF%B9%E4%BA%8Ec%E8%AF%AD%E8%A8%80%E7%AC%AC%E4%B8%80%E7%AB%A0%E7%9A%84%E6%80%BB%E7%BB%93%E5%92%8C%E5%9B%9E%E9%A1%BE/" class="article-date">
-  <time datetime="2020-10-02T04:07:32.000Z" itemprop="datePublished">2020-10-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/02/%E5%AF%B9%E4%BA%8Ec%E8%AF%AD%E8%A8%80%E7%AC%AC%E4%B8%80%E7%AB%A0%E7%9A%84%E6%80%BB%E7%BB%93%E5%92%8C%E5%9B%9E%E9%A1%BE/">对于c语言第一章的总结和回顾</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="c语言的基础知识"><a href="#c语言的基础知识" class="headerlink" title="c语言的基础知识"></a>c语言的基础知识</h1><h1 id="第一章-c语言的基础知识"><a href="#第一章-c语言的基础知识" class="headerlink" title="第一章 c语言的基础知识"></a>第一章 c语言的基础知识</h1><h2 id="1-1-c语言概述"><a href="#1-1-c语言概述" class="headerlink" title="1.1 c语言概述"></a>1.1 c语言概述</h2><hr>
-<h2 id="1-2-c程序的结构"><a href="#1-2-c程序的结构" class="headerlink" title="1.2 c程序的结构"></a>1.2 c程序的结构</h2><p><img src="/images/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202020-10-18%20163104-1603179321786.png"></p>
-<hr>
-<h2 id="1-3-c语言的数据类型"><a href="#1-3-c语言的数据类型" class="headerlink" title="1.3 c语言的数据类型"></a>1.3 c语言的数据类型</h2><h3 id="1-3-1-基本数据类型"><a href="#1-3-1-基本数据类型" class="headerlink" title="1.3.1 基本数据类型"></a>1.3.1 基本数据类型</h3><h4 id="1-整型"><a href="#1-整型" class="headerlink" title="1.整型"></a>1.整型</h4><p>和数学的概念一样，在C语言中，整数是没有小数部分的数。例如， 2、−23和2456都是整数。而3.14、0.22和2.000都不是整数。</p>
-<p>== *计算机以二进制储存整数数据的方法</p>
-<p>  例如，整数7以二进制写是111。因此，要在8位字节中储存该数字，需要把前5位都设置成0，后3位设置成1。</p>
-<p><img src="/images/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202020-10-18%20163737.png"></p>
-<p>​          </p>
-<h4 id="2-浮点型（小数"><a href="#2-浮点型（小数" class="headerlink" title="2.浮点型（小数)"></a>2.浮点型（小数)</h4><blockquote>
-<p>  2.75、3.16E7、7.00 和 2e-8 都是浮点数。注意，在一个值后面加上一个小数点，该值就成为一个浮点值。所 以，7是整数，7.00是浮点数。</p>
-</blockquote>
-<p>== *以浮点格式（十进制）储存π的值.==</p>
-<p> <img src="/images/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202020-10-18%20164354.png"></p>
-<h4 id="3-字符型（char）"><a href="#3-字符型（char）" class="headerlink" title="3.字符型（char）"></a>3.字符型（char）</h4><blockquote>
-<p>​     char类型用于储存字符（如，字母或标点符号），但是从技术层面看， char是整数类型。因为char类型实际上储存的是整数而不是字    符。另外，char类型也可以表示较小的整数。</p>
-</blockquote>
-<h3 id="1-3-2-变量与常量"><a href="#1-3-2-变量与常量" class="headerlink" title="1.3.2 变量与常量"></a>1.3.2 变量与常量</h3><blockquote>
-<p>有些数据类型在程序使用之前已经预先设定好了，在整个程序的运行过程中没有变化，这些称为常量（constant）。其他数据类型 在程序运行期间可能会改变或被赋值，这些称为变量（variable）。</p>
-</blockquote>
-<h3 id="1-3-3-二（八，十六）进制的转换"><a href="#1-3-3-二（八，十六）进制的转换" class="headerlink" title="1.3.3 二（八，十六）进制的转换"></a>1.3.3 二（八，十六）进制的转换</h3><p><img src="/images/%E4%BA%8C%E8%BF%9B%E5%88%B6-%E5%85%AB%E8%BF%9B%E5%88%B6.png"></p>
-<p><img src="/images/%E4%BA%8C%E8%BF%9B%E5%88%B6%E2%86%92%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6.png"></p>
-<p><img src="/images/%E5%85%AB%E8%BF%9B%E5%88%B6%E2%86%92%E4%BA%8C%E8%BF%9B%E5%88%B6.png"></p>
-<p><img src="/images/%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6%E2%86%92%E4%BA%8C%E8%BF%9B%E5%88%B6.png"></p>
-<hr>
-<h2 id="1-4-c程序的输入和输出"><a href="#1-4-c程序的输入和输出" class="headerlink" title="1.4 c程序的输入和输出"></a>1.4 c程序的输入和输出</h2><h4 id="函数形式：-include-lt-stdio-h-gt"><a href="#函数形式：-include-lt-stdio-h-gt" class="headerlink" title="*函数形式：#include&lt;stdio.h&gt;"></a>*函数形式：#include&lt;stdio.h&gt;</h4><h4 id="对象流形式：-include-lt-iostream-h-gt"><a href="#对象流形式：-include-lt-iostream-h-gt" class="headerlink" title="*对象流形式：#include&lt;iostream.h&gt;"></a>*对象流形式：#include&lt;iostream.h&gt;</h4><h4 id="输出：printf-“a-d-b-f”-a-b"><a href="#输出：printf-“a-d-b-f”-a-b" class="headerlink" title="*输出：printf (“a=%d,b=%f”,a,b);"></a>*输出：printf (“a=%d,b=%f”,a,b);</h4><p>​     printf为函数名；a，b为普通字符；%d，%f为格式说明；</p>
-<p>​     后面的a，b为输出列表（替代前面的%d，%f)</p>
-<p>​     输出结果为：a=×，b=×</p>
-<h4 id="scanf（）函数"><a href="#scanf（）函数" class="headerlink" title="*scanf（）函数"></a>*scanf（）函数</h4><p>格式：scanf（格式控制序列，地址列表）；</p>
-<p>例如 scanf（”%d“，&amp;a）；</p>
-<hr>
-<h2 id="1-5一些基本表格"><a href="#1-5一些基本表格" class="headerlink" title="1.5一些基本表格"></a>1.5一些基本表格</h2><p><img src="/images/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202020-10-20%20154401.png"></p>
-<h1 id="（美化和图片更新中……）"><a href="#（美化和图片更新中……）" class="headerlink" title="（美化和图片更新中……）"></a>（美化和图片更新中……）</h1>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2020/10/02/%E5%AF%B9%E4%BA%8Ec%E8%AF%AD%E8%A8%80%E7%AC%AC%E4%B8%80%E7%AB%A0%E7%9A%84%E6%80%BB%E7%BB%93%E5%92%8C%E5%9B%9E%E9%A1%BE/" data-id="ckkarnink000eu8ulbpqobdc0" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/10/20/%E5%B0%8F%E7%AC%94%E8%AE%B0/" data-id="ckkcl7tj1000hqsulgnu4568d" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li></ul>
@@ -630,23 +730,23 @@
       <ul>
         
           <li>
+            <a href="/2021/01/25/php/%E5%B8%B8%E9%87%8F/">常量</a>
+          </li>
+        
+          <li>
             <a href="/2021/01/24/%E9%AD%94%E5%B9%BB%E7%9A%84%E4%B8%96%E7%95%8C/%E5%A2%A8%E8%8C%B6/">墨茶Official</a>
           </li>
         
           <li>
-            <a href="/2021/01/23/%E5%8F%98%E9%87%8F%EF%BC%88php%EF%BC%89/">变量（php）</a>
+            <a href="/2021/01/23/php/%E5%8F%98%E9%87%8F%EF%BC%88php%EF%BC%89/">变量（php）</a>
           </li>
         
           <li>
-            <a href="/2021/01/23/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%88php%EF%BC%89/">php的数据类型</a>
+            <a href="/2021/01/23/php/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%88php%EF%BC%89/">php的数据类型</a>
           </li>
         
           <li>
             <a href="/2020/12/24/zati/">一些题目</a>
-          </li>
-        
-          <li>
-            <a href="/2020/12/22/aaaaa/">字符串</a>
           </li>
         
       </ul>
