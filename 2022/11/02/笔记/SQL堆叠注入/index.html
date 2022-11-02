@@ -4,18 +4,22 @@
 <script src="/config.b1f44fafffd3e4c9776e.js"></script>
 <!-- hexo injector head_begin end -->
 <meta charset="utf-8">
-<title>Hexo</title>
+<title>笔记/SQL堆叠注入 - Hexo</title>
 <base href="/">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-<link rel="canonical" href="http://example.com/404/">
+<link rel="canonical" href="http://example.com/2022/11/02/%E7%AC%94%E8%AE%B0/SQL%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5/">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
+<meta name="description" content="1.堆叠注入 堆叠注入可以执行多条数据库语句 比如： 1username&#x3D;1&amp;#x27;;show databases# 由于堆叠注入的特点，我们可以使用预处理来绕过一些过滤的语句 比如update被过滤了，我们怎么修改小明的英语成绩呢？下面的语句可以参考： 1username&#x3D;1&amp;#x27;;set @sql&#x3D;concat(&amp;#x27;up&amp;#x27;,&amp;#x27;date score set">
 <meta property="og:type" content="website">
-<meta property="og:title" content="404">
-<meta property="og:url" content="http://example.com/404/index.html">
+<meta property="og:title" content="笔记&#x2F;SQL堆叠注入">
+<meta property="og:url" content="http://example.com/2022/11/02/%E7%AC%94%E8%AE%B0/SQL%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1.堆叠注入 堆叠注入可以执行多条数据库语句 比如： 1username&#x3D;1&amp;#x27;;show databases# 由于堆叠注入的特点，我们可以使用预处理来绕过一些过滤的语句 比如update被过滤了，我们怎么修改小明的英语成绩呢？下面的语句可以参考： 1username&#x3D;1&amp;#x27;;set @sql&#x3D;concat(&amp;#x27;up&amp;#x27;,&amp;#x27;date score set">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://www.gravatar.com/avatar/d41d8cd98f00b204e9800998ecf8427e?s=160">
+<meta property="article:published_time" content="2022-11-02T07:21:52.646Z">
+<meta property="article:modified_time" content="2022-11-02T08:10:10.149Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://www.gravatar.com/avatar/d41d8cd98f00b204e9800998ecf8427e?s=160">
